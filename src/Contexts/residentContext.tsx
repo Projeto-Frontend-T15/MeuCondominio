@@ -1,4 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useState, ReactNode, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import api from '../services/api';
 
 interface iContextProps {
   children: React.ReactNode;
