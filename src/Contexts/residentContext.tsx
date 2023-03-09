@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 import api from "../services/api";
 import {
   iResidentContext,
@@ -8,17 +8,13 @@ import {
   iMaintenance,
   iImprovement,
   iCashs,
-  iUserLogin,
   iComments,
+  iUser,
+  iAddComments,
 } from "./interfacesResident";
 
 export const ResidentContext = createContext({} as iResidentContext);
 
-interface iAddComments {
-  userId: number;
-  messageId: number;
-  commen: string;
-}
 export function ResidentProvider({ children }: iContextProps) {
   const [messages, setMessages] = useState<iMessages[]>([]);
   const [maintenance, setMaintenance] = useState<iMaintenance[]>([]);
@@ -27,14 +23,16 @@ export function ResidentProvider({ children }: iContextProps) {
   const [comments, setComments] = useState<iComments[]>([]);
 
   const userLoginLocal = localStorage.getItem("@user");
-  const [userLogin, setUserLogin] = useState<iUserLogin>(
+  const [userLogin, setUserLogin] = useState<iUser>(
     userLoginLocal ? JSON.parse(userLoginLocal) : {}
   );
 
+  const navegate = useNavigate();
+
   const messageApi = async () => {
-    const idCond = userLogin.user.condId;
+    const idCond = userLogin.condId;
     try {
-      const response = await api.get<iMessages>(`messages?condId=${idCond}`);
+      const response = await api.get<iMessages[]>(`messages?condId=${idCond}`);
       setMessages(response.data);
     } catch (error) {
       console.log(error);
@@ -43,7 +41,7 @@ export function ResidentProvider({ children }: iContextProps) {
   messageApi();
 
   const maintenanceApi = async () => {
-    const idCond = userLogin.user.condId;
+    const idCond = userLogin.condId;
     try {
       const response = await api.get<iMaintenance[]>(
         `maintenance?condId=${idCond}`
@@ -56,7 +54,7 @@ export function ResidentProvider({ children }: iContextProps) {
   maintenanceApi();
 
   const improvementsApi = async () => {
-    const idCond = userLogin.user.condId;
+    const idCond = userLogin.condId;
     try {
       const response = await api.get<iImprovement[]>(
         `improvements?condId=${idCond}`
@@ -69,7 +67,7 @@ export function ResidentProvider({ children }: iContextProps) {
   improvementsApi();
 
   const cashsApi = async () => {
-    const idCond = userLogin.user.condId;
+    const idCond = userLogin.condId;
     try {
       const response = await api.get<iCashs[]>(`cashs?condId=${idCond}`);
       setCashs(response.data);
@@ -97,6 +95,11 @@ export function ResidentProvider({ children }: iContextProps) {
     }
   };
 
+  const logout = () => {
+    localStorage.clear();
+    navegate("/");
+  };
+
   return (
     <ResidentContext.Provider
       value={{
@@ -106,6 +109,9 @@ export function ResidentProvider({ children }: iContextProps) {
         cashs,
         commentsApi,
         comments,
+        logout,
+        addComments,
+        userLogin,
       }}
     >
       {children}

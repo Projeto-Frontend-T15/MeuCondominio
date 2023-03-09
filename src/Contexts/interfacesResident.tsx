@@ -1,6 +1,7 @@
 export interface iContextProps {
   children: React.ReactNode;
 }
+
 export interface iResidentContext {
   messages: iMessages[] | undefined;
   improvements: iImprovement[] | undefined;
@@ -8,6 +9,9 @@ export interface iResidentContext {
   cashs: iCashs[] | undefined;
   commentsApi: (id: number) => Promise<void>;
   comments: iComments[] | undefined;
+  logout: () => void;
+  addComments: (dataComents: iAddComments) => Promise<void>;
+  userLogin: iUser;
 }
 
 export interface iUser {
@@ -16,11 +20,6 @@ export interface iUser {
   name: string;
   condId: number;
   id: number;
-}
-
-export interface iUserLogin {
-  accessToken: string;
-  user: iUser;
 }
 
 export interface iMessages {
@@ -54,7 +53,11 @@ export interface iCashs {
   type: string;
   id: number;
 }
-
+export interface iAddComments {
+  userId: number;
+  messageId: number;
+  commen: string;
+}
 export interface iComments {
   userId: number;
   messageId: number;
