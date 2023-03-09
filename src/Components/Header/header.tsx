@@ -7,9 +7,9 @@ interface IHeader {
 }
 
 const Header = ({ home }: IHeader) => {
-  const { userLogout } = useContext(ResidentContext);
+  const { logout } = useContext(ResidentContext);
   const handleLogout = () => {
-    userLogout();
+    logout();
   };
 
   return (
