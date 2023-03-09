@@ -5,7 +5,12 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <Router />
+
+      <ResidentProvider>
+        <HomeProvider>
+          <Route />
+        </HomeProvider>
+      </ResidentProvider>
     </>
   );
 }
