@@ -7,8 +7,8 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <ResidentProvider children={undefined}>
-        <HomeProvider children={undefined}>
+      <ResidentProvider>
+        <HomeProvider>
           <Route />
         </HomeProvider>
       </ResidentProvider>
