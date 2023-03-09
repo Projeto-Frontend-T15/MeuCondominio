@@ -1,18 +1,18 @@
-import { UseFormRegisterReturn } from 'react-hook-form';
+import { UseFormRegisterReturn } from "react-hook-form";
 
-interface IInput{
+interface IInput {
   type: string;
   register: UseFormRegisterReturn<string>;
   error?: any;
   placeholder: string;
 }
 
-function Input({type, register, error, placeholder}:IInput){
-  <fieldset>
-    <input type={type} {...register} placeholder={placeholder}/>
-    {error && <p>{error.message}</p>}
-  </fieldset>
+function Input({ type, register, error, placeholder }: IInput) {
+  return (
+    <fieldset>
+      <input type={type} placeholder={placeholder} {...register} />
+      {error && <p>{error.message}</p>}
+    </fieldset>
+  );
 }
-;
-
 export default Input;

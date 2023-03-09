@@ -3,6 +3,7 @@ import { IloginUser, userContext } from "../../../Contexts/userContext";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { formSchema } from "./formSchema";
+import Input from "../Input";
 
 export function Login() {
   const { userLogin } = useContext(userContext);
@@ -21,13 +22,13 @@ export function Login() {
 
   return (
     <form onSubmit={handleSubmit(submit)}>
-      <input
+      <Input
         type="text"
         placeholder="Email"
         register={register("email")}
         error={errors.email}
       />
-      <input
+      <Input
         type="text"
         placeholder="Senha"
         register={register("password")}
