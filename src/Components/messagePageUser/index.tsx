@@ -1,8 +1,10 @@
-export function MessagePageUser() {
+import { iMessages } from "../../Contexts/interfacesResident";
+
+export function MessagePageUser({ title, descripiton }: iMessages) {
   return (
     <li>
-      <h2>Título</h2>
-      <p>Texto</p>
+      <h2>{title}</h2>
+      <p>{descripiton}</p>
       <button type="button">Responder</button>
       <button type="button">Comentários</button>
     </li>

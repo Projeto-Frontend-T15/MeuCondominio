@@ -1,9 +1,10 @@
 
+import { Router } from "./routes";
+import { GlobalStyles } from "./Styles/global";
 import { ToastContainer } from "react-toastify";
 import { HomeProvider } from "./Contexts/homeContext";
 import { ResidentProvider } from "./Contexts/residentContext";
-import Router from "./routes";
-import { GlobalStyles } from "./styles/global";
+
 
 function App() {
   return (

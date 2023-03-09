@@ -1,3 +1,17 @@
-const HomeUser = () => (<></>);
+import { CardMaintenance } from "../Components/CardMaintenance/maintenance";
+import { Header } from "../Components/headerPageUser/header";
+import { ListMessagesUserPage } from "../Components/ListMessagesUser/listMessage";
 
-export default HomeUser
+const HomeUser = () => (
+  <>
+    <Header />
+    <div>
+      <ListMessagesUserPage />
+    </div>
+    <div>
+      <CardMaintenance />
+    </div>
+  </>
+);
+
+export default HomeUser;
