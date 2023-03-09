@@ -1,3 +1,4 @@
+
 import { Header } from "../Components/headerPageUser/header";
 
 const LandingPage = () => {
@@ -18,4 +19,3 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
