@@ -1,18 +1,27 @@
-import { UseFormRegisterReturn } from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { IRegisterUser, userContext } from "../../../Contexts/userContext";
+import { formSchema } from "./formSchema";
 
-interface IInput{
-  label: string;
-  type: string;
-  register: UseFormRegisterReturn<string>;
-  error?: any;
-  placeholder: string;
+export function Register() {
+  const { userRegister } = useContext(userContext);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IRegisterUser>({
+    resolver: yupResolver(formSchema),
+  });
+
+  const submit: SubmitHandler<IRegisterUser> = (data) => {
+    userRegister(data);
+  };
+
+  return(
+    <form onSubmit={handleSubmit(submit)}>
+      <input type="text"/>
+    </form>
+  )
 }
-
-const Input = ({label, type, register, error, placeholder}:IInput) => (
-  <fieldset>
-    <input label={label} type={type} {...register} placeholder={placeholder}/>
-    {error && <p>{error.message}</p>}
-  </fieldset>
-);
-
-export default Input;
