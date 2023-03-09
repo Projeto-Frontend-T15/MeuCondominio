@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomeAdm from "./Pages/pageHomeAdm";
 import HomeUser from "./Pages/pageHomeUser";
@@ -13,3 +12,5 @@ const Router = () => (
     <Route path="/homeAdm" element={<HomeAdm />} />
   </Routes>
 );
+
+export default Router;
