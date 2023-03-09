@@ -4,7 +4,7 @@ import HomeUser from "./Pages/pageHomeUser";
 import LandingPage from "./Pages/pageLanding";
 import LoginPage from "./Pages/pageLogin";
 
-const Router = () => (
+export const Router = () => (
   <Routes>
     <Route path="/" element={<LandingPage />} />
     <Route path="/login" element={<LoginPage />} />
