@@ -1,5 +1,4 @@
-import { createContext, useState, ReactNode, useEffect } from "react";
-import { Await } from "react-router";
+import { createContext, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../services/api";
 import {
@@ -46,7 +45,7 @@ export function ResidentProvider({ children }: iContextProps) {
   const maintenanceApi = async () => {
     const idCond = userLogin.user.condId;
     try {
-      const response = await api.get<iMaintenance>(
+      const response = await api.get<iMaintenance[]>(
         `maintenance?condId=${idCond}`
       );
       setMaintenance(response.data);
@@ -59,7 +58,7 @@ export function ResidentProvider({ children }: iContextProps) {
   const improvementsApi = async () => {
     const idCond = userLogin.user.condId;
     try {
-      const response = await api.get<iImprovement>(
+      const response = await api.get<iImprovement[]>(
         `improvements?condId=${idCond}`
       );
       setImprovements(response.data);
@@ -72,7 +71,7 @@ export function ResidentProvider({ children }: iContextProps) {
   const cashsApi = async () => {
     const idCond = userLogin.user.condId;
     try {
-      const response = await api.get<iCashs>(`cashs?condId=${idCond}`);
+      const response = await api.get<iCashs[]>(`cashs?condId=${idCond}`);
       setCashs(response.data);
     } catch (error) {
       console.log(error);
@@ -82,7 +81,7 @@ export function ResidentProvider({ children }: iContextProps) {
 
   const commentsApi = async (id: number) => {
     try {
-      const response = await api.get<iComments>(`comments?messageId=${id} `);
+      const response = await api.get<iComments[]>(`comments?messageId=${id} `);
       setComments(response.data);
     } catch (error) {
       console.log(error);
