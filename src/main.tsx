@@ -13,6 +13,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           <App />
         </HomeProvider>
       </ResidentProvider>
+
     </BrowserRouter>
   </React.StrictMode>
 );
