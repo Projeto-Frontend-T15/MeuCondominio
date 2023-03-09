@@ -7,8 +7,8 @@ interface IDefaultProviderProps {
   children: React.ReactNode;
 }
 
-interface IRegisterUser {
-  is_admin: boolean;
+export interface IRegisterUser {
+  is_admin: string;
   name: string;
   email: string;
   password: string;
@@ -22,10 +22,10 @@ export interface IloginUser {
 }
 
 interface IUser {
-  email: string;
-  is_admin: boolean; 
+  is_admin: string;
   name: string;
-  condId : number;
+  email: string;
+  condId: number;
   id: number;
 }
 
@@ -48,7 +48,6 @@ export const userProvider = ({ children }: IDefaultProviderProps) => {
       setUser(response.data.user);
 
       toast.success("Usuário criado com sucesso!");
-
     } catch (error) {
       toast.error("Algo deu errado ao cadastrar");
     }
@@ -58,13 +57,12 @@ export const userProvider = ({ children }: IDefaultProviderProps) => {
     try {
       const response = await api.post("/signin", data);
       setUser(response.data.user);
-      localStorage.setItem("@Token", response.data.accessToken)
-      localStorage.setItem("@user", response.data.user)
+      localStorage.setItem("@Token", response.data.accessToken);
+      localStorage.setItem("@user", response.data.user);
 
       toast.success("Login realizado com sucesso!");
-
     } catch (error) {
-      toast.error("Algo deu errado ao logar")
+      toast.error("Algo deu errado ao logar");
     }
   };
 
@@ -82,11 +80,15 @@ export const userProvider = ({ children }: IDefaultProviderProps) => {
   }, []);
 
   const userLogout = () => {
-    setUser(null)
-    localStorage.removeItem("@Token")
+    setUser(null);
+    localStorage.removeItem("@Token");
 
-    navigate("/")
+    navigate("/");
   };
 
-  return <userContext.Provider value={{ userRegister, userLogin, userLogout }}>{children}</userContext.Provider>;
+  return (
+    <userContext.Provider value={{ userRegister, userLogin, userLogout }}>
+      {children}
+    </userContext.Provider>
+  );
 };
