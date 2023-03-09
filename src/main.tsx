@@ -9,24 +9,21 @@ import { ResidentProvider } from "./Contexts/residentContext";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
-      <ResidentProvider>
-        <HomeProvider>
-          <App />
-        </HomeProvider>
-        <ToastContainer
-          position="top-right"
-          autoClose={2000}
-          limit={1}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      </ResidentProvider>
+      <App />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </BrowserRouter>
   </React.StrictMode>
 );

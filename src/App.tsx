@@ -1,5 +1,8 @@
+import { HomeProvider } from "./Contexts/homeContext";
+import { ResidentProvider } from "./Contexts/residentContext";
 import { Router } from "./routes";
-import { GlobalStyles } from "./Styles/global";
+import { GlobalStyles } from "./styles/global";
+
 
 function App() {
   return (
@@ -8,7 +11,7 @@ function App() {
 
       <ResidentProvider>
         <HomeProvider>
-          <Route />
+          <Router />
         </HomeProvider>
       </ResidentProvider>
     </>
