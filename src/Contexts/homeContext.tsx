@@ -2,7 +2,7 @@ import { createContext, ReactNode } from "react";
 import { toast } from "react-toastify";
 import api from "../services/api";
 
-interface iContextProps {
+export interface iContextProps {
   children: React.ReactNode;
 }
 interface iHomeContext {}
