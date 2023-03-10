@@ -13,7 +13,7 @@ export interface IRegisterUser {
   email: string;
   password: string;
   confirmPassword: string;
-  condId: number;
+  condId?: number;
 }
 
 export interface IloginUser {
@@ -25,7 +25,13 @@ interface IUser {
   is_admin: string;
   name: string;
   email: string;
-  condId: number;
+  condId?: number;
+  id: number;
+}
+
+interface ICondos{
+  name: string;
+  userId: number;
   id: number;
 }
 
@@ -33,12 +39,17 @@ interface IuserContext {
   userRegister: (data: IRegisterUser) => Promise<void>;
   userLogin: (data: IloginUser) => Promise<void>;
   userLogout: () => void;
+  condo: ICondos[];
+  isAdmin: boolean;
+  setIsAdmin: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const userContext = createContext({} as IuserContext);
 
 export const userProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null);
+  const [condo, setCondo] = useState<ICondos[]>([])
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -86,8 +97,22 @@ export const userProvider = ({ children }: IDefaultProviderProps) => {
     navigate("/");
   };
 
+  useEffect(() => {
+    const condos = async() => {
+      try {
+        const response = await api.get("/conds")
+        setCondo(response.data)
+  
+      } catch (error) {
+        toast.error("Algo deu errado ao listar condominios cadastrados")      
+      }
+    }
+    condos();
+  }, [])
+  
+
   return (
-    <userContext.Provider value={{ userRegister, userLogin, userLogout }}>
+    <userContext.Provider value={{ userRegister, userLogin, userLogout, isAdmin, setIsAdmin, condo }}>
       {children}
     </userContext.Provider>
   );

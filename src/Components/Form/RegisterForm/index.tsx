@@ -2,13 +2,17 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IRegisterUser, userContext } from "../../../Contexts/userContext";
+import Input from "../Input";
+import { Select } from "./Select";
 import { formSchema } from "./formSchema";
+import { SelectCondo } from "./SelectCondo";
 
 export function Register() {
-  const { userRegister } = useContext(userContext);
+  const { userRegister, isAdmin } = useContext(userContext);
 
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors },
   } = useForm<IRegisterUser>({
@@ -18,10 +22,48 @@ export function Register() {
   const submit: SubmitHandler<IRegisterUser> = (data) => {
     userRegister(data);
   };
+  
 
-  return(
+  return (
     <form onSubmit={handleSubmit(submit)}>
-      <input type="text"/>
+      <Select register={register("is_admin")} error={errors.is_admin} />
+
+      <Input
+        type="text"
+        placeholder="Nome"
+        register={register("name")}
+        error={errors.name}
+      />
+      <Input
+        type="email"
+        placeholder="Email"
+        register={register("email")}
+        error={errors.email}
+      />
+      <Input
+        type="password"
+        placeholder="Senha"
+        register={register("password")}
+        error={errors.password}
+      />
+      <Input
+        type="password"
+        placeholder="Confirmar senha"
+        register={register("confirmPassword")}
+        error={errors.confirmPassword}
+      />
+
+      {/* <SelectCondo 
+        register={register("condId")} 
+        error={errors.condId} /> */}
+
+       
+        {watch("is_admin")? console.log('true') : (
+        <SelectCondo register={register("condId")} error={errors.condId} />
+      )}
+      
+
+      <button type="submit">Cadastrar</button>
     </form>
-  )
+  );
 }
