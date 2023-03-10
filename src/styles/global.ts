@@ -8,7 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     border: none;
     list-style: none;
     text-decoration: none;
-    font-family: inter;
+    font-family: 'inter', sans-serif;
     :root{
             --color-1:#FB545C;
             --color-2: #99662D;
@@ -16,6 +16,8 @@ export const GlobalStyles = createGlobalStyle`
             --color-4: #FDF5A4;
             --color-black: #0D0C0C;
             --color-white: #EFEFEF;
+
+            --font-size: 1.5rem;
         
         }
   }
