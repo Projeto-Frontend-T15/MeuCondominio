@@ -8,7 +8,7 @@ import { formSchema } from "./formSchema";
 import { SelectCondo } from "./SelectCondo";
 
 export function Register() {
-  const { userRegister, isAdmin } = useContext(userContext);
+  const { userRegister } = useContext(userContext);
 
   const {
     register,
@@ -18,6 +18,17 @@ export function Register() {
   } = useForm<IRegisterUser>({
     resolver: yupResolver(formSchema),
   });
+
+  const isAdmin = watch("is_admin");
+  let selectComponent;
+
+  if(isAdmin === "false"){
+    selectComponent = (
+      <SelectCondo
+        register={register("condId")}
+        error={errors.condId}
+      />    
+  )}
 
   const submit: SubmitHandler<IRegisterUser> = (data) => {
     userRegister(data);
@@ -53,15 +64,7 @@ export function Register() {
         error={errors.confirmPassword}
       />
 
-      {/* <SelectCondo 
-        register={register("condId")} 
-        error={errors.condId} /> */}
-
-       
-        {watch("is_admin")? console.log('true') : (
-        <SelectCondo register={register("condId")} error={errors.condId} />
-      )}
-      
+      {selectComponent}
 
       <button type="submit">Cadastrar</button>
     </form>
