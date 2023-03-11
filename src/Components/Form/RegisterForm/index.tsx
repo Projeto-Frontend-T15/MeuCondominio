@@ -6,6 +6,7 @@ import Input from "../Input";
 import { Select } from "./Select";
 import { formSchema } from "./formSchema";
 import { SelectCondo } from "./SelectCondo";
+import { FormStyled } from "./style";
 
 export function Register() {
   const { userRegister } = useContext(userContext);
@@ -36,7 +37,7 @@ export function Register() {
   
 
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <FormStyled onSubmit={handleSubmit(submit)}>
       <Select register={register("is_admin")} error={errors.is_admin} />
 
       <Input
@@ -67,6 +68,6 @@ export function Register() {
       {selectComponent}
 
       <button type="submit">Cadastrar</button>
-    </form>
+    </FormStyled>
   );
 }
