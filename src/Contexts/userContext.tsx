@@ -29,7 +29,7 @@ interface IUser {
   id: number;
 }
 
-interface ICondos{
+interface ICondos {
   name: string;
   userId: number;
   id: number;
@@ -48,7 +48,7 @@ export const userContext = createContext({} as IuserContext);
 
 export const userProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null);
-  const [condo, setCondo] = useState<ICondos[]>([])
+  const [condo, setCondo] = useState<ICondos[]>([]);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -66,7 +66,7 @@ export const userProvider = ({ children }: IDefaultProviderProps) => {
 
   const userLogin = async (data: IloginUser) => {
     try {
-      const response = await api.post("/signin", data);
+      const response = await api.post("signin", data);
       setUser(response.data.user);
       localStorage.setItem("@Token", response.data.accessToken);
       localStorage.setItem("@user", response.data.user);
@@ -98,21 +98,28 @@ export const userProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   useEffect(() => {
-    const condos = async() => {
+    const condos = async () => {
       try {
-        const response = await api.get("/conds")
-        setCondo(response.data)
-  
+        const response = await api.get("/conds");
+        setCondo(response.data);
       } catch (error) {
-        toast.error("Algo deu errado ao listar condominios cadastrados")      
+        toast.error("Algo deu errado ao listar condominios cadastrados");
       }
-    }
+    };
     condos();
-  }, [])
-  
+  }, []);
 
   return (
-    <userContext.Provider value={{ userRegister, userLogin, userLogout, isAdmin, setIsAdmin, condo }}>
+    <userContext.Provider
+      value={{
+        userRegister,
+        userLogin,
+        userLogout,
+        isAdmin,
+        setIsAdmin,
+        condo,
+      }}
+    >
       {children}
     </userContext.Provider>
   );
