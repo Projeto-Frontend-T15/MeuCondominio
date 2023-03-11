@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import api from "../../../../services/api";
+import { FielsetStyled } from "./style";
 
 interface ISelectCondo {
   register: UseFormRegisterReturn<string>;
@@ -32,7 +34,7 @@ export function SelectCondo({ register, error }: ISelectCondo) {
 
 
   return (
-    <fieldset>
+    <FielsetStyled>
       <select {...register}>
         <option value="">Selecionar Condomínio</option>
         {condo.map((cond) => (
@@ -42,6 +44,6 @@ export function SelectCondo({ register, error }: ISelectCondo) {
         ))}
       </select>
       {error && <p>{error.message}</p>}
-    </fieldset>
+    </FielsetStyled>
   );
 }
