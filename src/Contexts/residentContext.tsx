@@ -111,11 +111,13 @@ export function ResidentProvider({ children }: iContextProps) {
     <ResidentContext.Provider
       value={{
         messages,
+        setMessages,
         improvements,
         maintenance,
         cashs,
         commentsApi,
         comments,
+        setComments,
         logout,
         addComments,
         userLogin,

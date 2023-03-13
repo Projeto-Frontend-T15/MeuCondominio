@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ResidentContext } from "../../Contexts/residentContext";
 import { StyledHeader } from "./style";
 
@@ -8,6 +8,7 @@ interface IHeader {
 
 const Header = ({ home }: IHeader) => {
   const { logout } = useContext(ResidentContext);
+ 
   const handleLogout = () => {
     logout();
   };
