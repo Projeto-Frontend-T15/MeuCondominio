@@ -82,9 +82,9 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         const userJson = JSON.parse(userLocal);
 
         if (userJson.is_admin === "true") {
-          navigate("/homeUser");
+          navigate("/homeAdmin");
         } else if (userJson.is_admin === "false") {
-          navigate("/homeAdm");
+          navigate("/homeUser");
         }
       }
     }
