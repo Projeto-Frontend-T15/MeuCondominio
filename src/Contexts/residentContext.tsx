@@ -21,6 +21,8 @@ export function ResidentProvider({ children }: iContextProps) {
   const [improvements, setImprovements] = useState<iImprovement[]>([]);
   const [cashs, setCashs] = useState<iCashs[]>([]);
   const [comments, setComments] = useState<iComments[]>([]);
+  const [modalMessage, setModalMessage] = useState(false);
+  const [readMessage, setReadMessage] = useState<iMessages>();
 
   const userLoginLocal = localStorage.getItem("@user");
   const [userLogin, setUserLogin] = useState<iUser>(
@@ -31,14 +33,19 @@ export function ResidentProvider({ children }: iContextProps) {
 
   const messageApi = async () => {
     const idCond = userLogin.condId;
+    const token = localStorage.getItem("@Token");
     try {
-      const response = await api.get(`/messages?condId=${idCond}`);
+
+      const response = await api.get<iMessages[]>(
+        `/messages?condId=${idCond}`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
       setMessages(response.data);
     } catch (error) {
       console.log(error);
     }
   };
-  messageApi();
 
   const maintenanceApi = async () => {
     const idCond = userLogin.condId;
@@ -51,7 +58,6 @@ export function ResidentProvider({ children }: iContextProps) {
       console.log(error);
     }
   };
-  maintenanceApi();
 
   const improvementsApi = async () => {
     const idCond = userLogin.condId;
@@ -64,10 +70,11 @@ export function ResidentProvider({ children }: iContextProps) {
       console.log(error);
     }
   };
-  improvementsApi();
 
   const cashsApi = async () => {
     const idCond = userLogin.condId;
+    console.log(idCond);
+
     try {
       const response = await api.get<iCashs[]>(`/cashs?condId=${idCond}`);
       setCashs(response.data);
@@ -75,11 +82,11 @@ export function ResidentProvider({ children }: iContextProps) {
       console.log(error);
     }
   };
-  cashsApi();
 
   const commentsApi = async (id: number) => {
     try {
-      const response = await api.get<iComments[]>(`/comments?messageId=${id} `);
+
+      const response = await api.get<iComments[]>(`/comments?messageId=${id}`);
       setComments(response.data);
     } catch (error) {
       console.log(error);
@@ -112,6 +119,7 @@ export function ResidentProvider({ children }: iContextProps) {
         logout,
         addComments,
         userLogin,
+        messageApi,
       }}
     >
       {children}
