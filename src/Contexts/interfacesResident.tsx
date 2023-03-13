@@ -14,6 +14,8 @@ export interface iResidentContext {
   addComments: (dataComents: iAddComments) => Promise<void>;
   userLogin: iUser;
   setComments: React.Dispatch<React.SetStateAction<iComments[]>>;
+  messageApi: () => Promise<void>;
+
 }
 
 export interface iUser {

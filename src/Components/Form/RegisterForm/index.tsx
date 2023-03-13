@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { IRegisterUser, userContext } from "../../../Contexts/userContext";
+import { IRegisterUser, UserContext } from "../../../Contexts/userContext";
 import Input from "../Input";
 import { Select } from "./Select";
 import { formSchema } from "./formSchema";
@@ -9,11 +9,12 @@ import { SelectCondo } from "./SelectCondo";
 import { FormStyled } from "./style";
 
 export function Register() {
-  const { userRegister } = useContext(userContext);
+  const { userRegister } = useContext(UserContext);
 
   const {
     register,
     watch,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<IRegisterUser>({
@@ -33,6 +34,7 @@ export function Register() {
 
   const submit: SubmitHandler<IRegisterUser> = (data) => {
     userRegister(data);
+    reset()
   };
   
 

@@ -11,6 +11,7 @@ const HomeUser = () => (
     <div>
       <CardMaintenance />
     </div>
+    {}
   </>
 );
 
