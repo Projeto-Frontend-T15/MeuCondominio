@@ -36,7 +36,7 @@ interface IuserContext {
   userLogout: () => void;
 }
 
-export const userContext = createContext({} as IuserContext);
+export const UserContext = createContext({} as IuserContext);
 
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null);
@@ -102,8 +102,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   return (
-    <userContext.Provider value={{ userRegister, userLogin, userLogout }}>
+    <UserContext.Provider value={{ userRegister, userLogin, userLogout }}>
       {children}
-    </userContext.Provider>
+    </UserContext.Provider>
   );
 };

@@ -6,7 +6,7 @@ export function ProtectedRoutes() {
 
   return (
     <UserProvider>
-        {/* {token ? <Outlet /> : <Navigate to="/" />} */}
+        {token ? <Outlet /> : <Navigate to="/" />}
     </UserProvider>
   );
 }
