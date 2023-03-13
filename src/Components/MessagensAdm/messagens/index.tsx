@@ -3,11 +3,11 @@ import { useContext } from "react";
 import { HomeContext } from "../../../Contexts/homeContext";
 import { iMessages } from "../../../Contexts/interfacesResident"
 
-interface IMessagensProps{
+interface IMessagesProps{
     mess: iMessages;
 }
 
-export function Messagens({mess}: IMessagensProps){
+export function Messages({mess}: IMessagesProps){
  
     const { deleteMessagens, setModal, readAllComents} = useContext(HomeContext)
 

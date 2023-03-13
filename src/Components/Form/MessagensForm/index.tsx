@@ -38,7 +38,9 @@ export function RegisterMessages(){
     }
 
     return(
+
         <StyledFormeMessages onSubmit={handleSubmit(submitMessage)}>
+
             <input type="text" placeholder="Titulo do Recado" {...register("title")}  />
            
             <input type="text" placeholder="Descrição do Recado" {...register("descripiton")} />

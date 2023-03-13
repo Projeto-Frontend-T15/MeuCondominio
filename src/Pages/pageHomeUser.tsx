@@ -1,10 +1,10 @@
 import { CardMaintenance } from "../Components/CardMaintenance/maintenance";
-import { Header } from "../Components/headerPageUser/header";
+import Header from "../Components/Header/header";
 import { ListMessagesUserPage } from "../Components/ListMessagesUser/listMessage";
 
 const HomeUser = () => (
   <>
-    <Header />
+    <Header home={true} />
     <div>
       <ListMessagesUserPage />
     </div>
