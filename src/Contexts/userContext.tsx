@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import api from "../services/api";
 
 interface IDefaultProviderProps {
@@ -13,7 +14,7 @@ export interface IRegisterUser {
   email: string;
   password: string;
   confirmPassword: string;
-  condId: number;
+  condId?: number;
 }
 
 export interface IloginUser {
@@ -25,7 +26,7 @@ interface IUser {
   is_admin: string;
   name: string;
   email: string;
-  condId: number;
+  condId?: number;
   id: number;
 }
 
@@ -35,11 +36,11 @@ interface IuserContext {
   userLogout: () => void;
 }
 
-export const userContext = createContext({} as IuserContext);
+export const UserContext = createContext({} as IuserContext);
 
-export const userProvider = ({ children }: IDefaultProviderProps) => {
+export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null);
-
+  
   const navigate = useNavigate();
 
   const userRegister = async (data: IRegisterUser) => {
@@ -55,12 +56,19 @@ export const userProvider = ({ children }: IDefaultProviderProps) => {
 
   const userLogin = async (data: IloginUser) => {
     try {
-      const response = await api.post("/signin", data);
+      const response = await api.post("/login", data);
       setUser(response.data.user);
       localStorage.setItem("@Token", response.data.accessToken);
-      localStorage.setItem("@user", response.data.user);
+      const userJson = JSON.stringify(response.data.user);
+      localStorage.setItem("@user", userJson);
 
       toast.success("Login realizado com sucesso!");
+
+      if (response.data.user.is_admin === "false") {
+        navigate("/homeUser");
+      } else if (response.data.user.is_admin === "true") {
+        navigate("/homeAdm");
+      }
     } catch (error) {
       toast.error("Algo deu errado ao logar");
     }
@@ -69,9 +77,16 @@ export const userProvider = ({ children }: IDefaultProviderProps) => {
   const autoLogin = () => {
     const token = localStorage.getItem("@Token");
     if (token) {
-      navigate("/");
-    } else {
-      navigate("/");
+      const userLocal = localStorage.getItem("@user");
+      if (userLocal) {
+        const userJson = JSON.parse(userLocal);
+
+        if (userJson.is_admin === "true") {
+          navigate("/homeAdmin");
+        } else if (userJson.is_admin === "false") {
+          navigate("/homeUser");
+        }
+      }
     }
   };
 
@@ -87,8 +102,8 @@ export const userProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   return (
-    <userContext.Provider value={{ userRegister, userLogin, userLogout }}>
+    <UserContext.Provider value={{ userRegister, userLogin, userLogout }}>
       {children}
-    </userContext.Provider>
+    </UserContext.Provider>
   );
 };

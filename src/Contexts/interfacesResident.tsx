@@ -12,6 +12,7 @@ export interface iResidentContext {
   logout: () => void;
   addComments: (dataComents: iAddComments) => Promise<void>;
   userLogin: iUser;
+  messageApi: () => Promise<void>;
 }
 
 export interface iUser {
