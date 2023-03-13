@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import api from "../services/api";
 import {
@@ -24,7 +24,7 @@ export function ResidentProvider({ children }: iContextProps) {
 
   const userLoginLocal = localStorage.getItem("@user");
   const [userLogin, setUserLogin] = useState<iUser>(
-    userLoginLocal ? JSON.parse(userLoginLocal) : {}
+    userLoginLocal ? JSON.parse(userLoginLocal) : []
   );
 
   const navegate = useNavigate();
@@ -32,7 +32,7 @@ export function ResidentProvider({ children }: iContextProps) {
   const messageApi = async () => {
     const idCond = userLogin.condId;
     try {
-      const response = await api.get<iMessages[]>(`messages?condId=${idCond}`);
+      const response = await api.get(`/messages?condId=${idCond}`);
       setMessages(response.data);
     } catch (error) {
       console.log(error);
@@ -44,7 +44,7 @@ export function ResidentProvider({ children }: iContextProps) {
     const idCond = userLogin.condId;
     try {
       const response = await api.get<iMaintenance[]>(
-        `maintenance?condId=${idCond}`
+        `/maintenance?condId=${idCond}`
       );
       setMaintenance(response.data);
     } catch (error) {
@@ -57,7 +57,7 @@ export function ResidentProvider({ children }: iContextProps) {
     const idCond = userLogin.condId;
     try {
       const response = await api.get<iImprovement[]>(
-        `improvements?condId=${idCond}`
+        `/improvements?condId=${idCond}`
       );
       setImprovements(response.data);
     } catch (error) {
@@ -69,7 +69,7 @@ export function ResidentProvider({ children }: iContextProps) {
   const cashsApi = async () => {
     const idCond = userLogin.condId;
     try {
-      const response = await api.get<iCashs[]>(`cashs?condId=${idCond}`);
+      const response = await api.get<iCashs[]>(`/cashs?condId=${idCond}`);
       setCashs(response.data);
     } catch (error) {
       console.log(error);
@@ -79,7 +79,7 @@ export function ResidentProvider({ children }: iContextProps) {
 
   const commentsApi = async (id: number) => {
     try {
-      const response = await api.get<iComments[]>(`comments?messageId=${id} `);
+      const response = await api.get<iComments[]>(`/comments?messageId=${id} `);
       setComments(response.data);
     } catch (error) {
       console.log(error);
@@ -88,7 +88,7 @@ export function ResidentProvider({ children }: iContextProps) {
 
   const addComments = async (dataComents: iAddComments) => {
     try {
-      const response = await api.post(`comments`, dataComents);
+      const response = await api.post(`/comments`, dataComents);
       setComments([...comments, response.data]);
     } catch (error) {
       console.log(error);

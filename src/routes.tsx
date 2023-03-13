@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import HomeAdm from "./Pages/pageHomeAdm";
 import HomeUser from "./Pages/pageHomeUser";
-import LandingPage from "./Pages/pageLanding";
+import LandingPage from "./Pages/PageLanding/pageLanding";
 import LoginPage from "./Pages/PageLogin";
 import { ProtectedRoutes } from "./Pages/ProtectedRoutes";
 
