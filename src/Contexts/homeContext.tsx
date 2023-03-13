@@ -17,9 +17,19 @@ interface iHomeContext {
   idCond: Id | null;
   setIdCond: React.Dispatch<React.SetStateAction<Id | null>>;
   readAllComents: (id: any) => Promise<void>;
+  residents: IResident[];
+  readAllResident: (id: any) => Promise<void>;
 }
 interface Id{
   condId: string,
+}
+export interface IResident{
+  email: string;
+  password: string;
+  is_admin: string;
+  name: string;
+  condId: number;
+  id: number;
 }
 
 export const HomeContext = createContext({} as iHomeContext);
@@ -29,11 +39,11 @@ export function HomeProvider({ children }: iContextProps) {
   const {messages, setMessages, setComments} = useContext(ResidentContext)
   const [modal, setModal] = useState(false)
   const [idCond, setIdCond] = useState<Id | null>(null)
+  const [residents, setResidents] = useState<IResident[]>([])
 
   useEffect(() => {
     readAllMenssagens(idCond)
   },[messages])
-
 
   const messagesRegister = async (data: iMessages ) => {
     const token = localStorage.getItem("@Token")
@@ -82,9 +92,10 @@ export function HomeProvider({ children }: iContextProps) {
 
 
   const readAllComents = async (id) => {
+    console.log(id)
     const token = localStorage.getItem("@Token")
     try {
-      const response = await api.get(`comments?messageId${id}`, {
+      const response = await api.get(`comments?messageId=${id}`, {
         headers:{
           Authorization: `Bearer ${token}`
         }
@@ -95,7 +106,22 @@ export function HomeProvider({ children }: iContextProps) {
     }
   }
 
+  const readAllResident = async (id) => {
+    const token = localStorage.getItem("@Token")
+    try {
+      const response = await api.get(`/users?condId=${id}`, {
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
+      setResidents(response.data)
+    } catch (error) {
+        console.log(error)
+    }
+  }
+  
+  
 
-  return <HomeContext.Provider value={{messagesRegister, deleteMessagens, modal, setModal, readAllMenssagens, idCond, setIdCond, readAllComents}}>{children}</HomeContext.Provider>;
+  return <HomeContext.Provider value={{messagesRegister, deleteMessagens, modal, setModal, readAllMenssagens, idCond, setIdCond, readAllComents, residents, readAllResident}}>{children}</HomeContext.Provider>;
 }
 

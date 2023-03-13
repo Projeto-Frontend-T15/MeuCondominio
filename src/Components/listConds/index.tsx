@@ -29,12 +29,8 @@ export function ListConds(){
       condos();
     }, [])
 
-    
-
-
 
     const newId: SubmitHandler<Id> = (id: Id) => {
-      console.log(id)
       setIdCond(id)
     }
 
