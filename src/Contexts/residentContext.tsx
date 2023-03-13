@@ -21,6 +21,8 @@ export function ResidentProvider({ children }: iContextProps) {
   const [improvements, setImprovements] = useState<iImprovement[]>([]);
   const [cashs, setCashs] = useState<iCashs[]>([]);
   const [comments, setComments] = useState<iComments[]>([]);
+  const [modalMessage, setModalMessage] = useState(false);
+  const [readMessage, setReadMessage] = useState<iMessages>();
 
   const userLoginLocal = localStorage.getItem("@user");
   const [userLogin, setUserLogin] = useState<iUser>(

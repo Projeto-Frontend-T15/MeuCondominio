@@ -5,6 +5,8 @@ export function ProtectedRoutes() {
   const token = localStorage.getItem("@Token");
 
   return (
-    <UserProvider>{token ? <Outlet /> : <Navigate to="/" />}</UserProvider>
+    <UserProvider>
+        {token ? <Outlet /> : <Navigate to="/" />}
+    </UserProvider>
   );
 }
