@@ -38,6 +38,7 @@ export function RegisterMessages(){
 
     return(
         <form onSubmit={handleSubmit(submitMessage)}>
+            <label htmlFor="form">Registre um recado</label>
             <input type="text" placeholder="Titulo do Recado" {...register("title")}  />
            
             <input type="text" placeholder="Descrição do Recado" {...register("descripiton")} />

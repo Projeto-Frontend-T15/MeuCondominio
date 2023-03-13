@@ -1,35 +1,37 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  .buttons {
+display: flex;
+
+flex-direction: row;
+align-content: center;
+align-items: center;
+justify-content: flex-end;
+width: 100%;
+justify-content: space-between;
+padding: 1rem;
+background-color: var(--color-1);
+  button {
+    width: 36%;
+    padding: 2%;
+    background-color: var(--color-2);
+    color: var (--color-white);
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--color-white);
+    height: 30%;
+    margin-left: 3%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 15px;
-
-    button {
-      background: transparent;
-      color: ${({ theme }) => theme.colors.gray150};
-      transition: 0.3s;
-
-      :hover {
-        color: ${({ theme }) => theme.colors.gray300};
-      }
-    }
+    align-items: center;
   }
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-  }
-
-  @media (max-width: 450px) {
-    .nav {
-      flex-direction: column;
-    }
+  .buttons{
+    width: 50%;
+    height: 40%;
+    display: flex;
+    color: var(--color-4);
+    margin-right: 10px;
   }
 `;
-
-import { Header } from "../headerPageUser/header";
-
 
 

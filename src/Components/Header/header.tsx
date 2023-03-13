@@ -8,7 +8,7 @@ interface IHeader {
 
 const Header = ({ home }: IHeader) => {
   const { logout } = useContext(ResidentContext);
- 
+
   const handleLogout = () => {
     logout();
   };
@@ -17,14 +17,13 @@ const Header = ({ home }: IHeader) => {
     <StyledHeader>
       <h1>Meu Condominio</h1>
       <div className="buttons">
-        {home === true ? (
+        {home === false ? (
           <button type="button">Entrar</button>
         ) : (
           <>
             <button type="button">Condominio</button>
             <button type="button">Manutencao</button>
-            <button type="button">Perfil</button>
-            <button type="button">Avisos</button>
+            <button type="button">Recados</button>
             <button type="button" onClick={handleLogout}>
               Logout
             </button>
