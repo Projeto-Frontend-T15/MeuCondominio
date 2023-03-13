@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { HomeContext } from "../../../Contexts/homeContext";
 import { iMessages } from "../../../Contexts/interfacesResident";
+import { StyledFormeMessages } from "./styled";
 import { schema } from "./validations";
 
 
@@ -37,12 +38,12 @@ export function RegisterMessages(){
     }
 
     return(
-        <form onSubmit={handleSubmit(submitMessage)}>
+        <StyledFormeMessages onSubmit={handleSubmit(submitMessage)}>
             <input type="text" placeholder="Titulo do Recado" {...register("title")}  />
            
             <input type="text" placeholder="Descrição do Recado" {...register("descripiton")} />
             
             <button type="submit">Registrar Recado</button>
-        </form>
+        </StyledFormeMessages>
     )
 }
