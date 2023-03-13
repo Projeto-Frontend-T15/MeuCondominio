@@ -1,7 +1,7 @@
 import { HomeProvider } from "./Contexts/homeContext";
 import { ResidentProvider } from "./Contexts/residentContext";
 import { Router } from "./routes";
-import { GlobalStyles } from "./styles/global";
+import { GlobalStyles } from "./Styles/global";
 import { UserProvider } from "./Contexts/userContext";
 
 function App() {
@@ -10,11 +10,11 @@ function App() {
       <GlobalStyles />
 
       <UserProvider>
-      <ResidentProvider>
-        <HomeProvider>
-          <Router />
-        </HomeProvider>
-      </ResidentProvider>
+        <ResidentProvider>
+          <HomeProvider>
+            <Router />
+          </HomeProvider>
+        </ResidentProvider>
       </UserProvider>
     </>
   );

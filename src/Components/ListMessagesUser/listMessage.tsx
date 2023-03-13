@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ResidentContext } from "../../Contexts/residentContext";
 import { MessagePageUser } from "../messagePageUser";
 
 export function ListMessagesUserPage() {
-  const { messages } = useContext(ResidentContext);
-
+  const { messages, messageApi } = useContext(ResidentContext);
+  useEffect(() => {
+    messageApi();
+  }, []);
   return (
     <ul>
       {messages?.map((mess) => (
