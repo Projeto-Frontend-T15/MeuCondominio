@@ -26,7 +26,7 @@ export function ResidentProvider({ children }: iContextProps) {
 
   const userLoginLocal = localStorage.getItem("@user");
   const [userLogin, setUserLogin] = useState<iUser>(
-    userLoginLocal ? JSON.parse(userLoginLocal) : {}
+    userLoginLocal ? JSON.parse(userLoginLocal) : []
   );
 
   const navegate = useNavigate();
@@ -35,10 +35,12 @@ export function ResidentProvider({ children }: iContextProps) {
     const idCond = userLogin.condId;
     const token = localStorage.getItem("@Token");
     try {
+
       const response = await api.get<iMessages[]>(
         `/messages?condId=${idCond}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
+
       setMessages(response.data);
     } catch (error) {
       console.log(error);
@@ -83,6 +85,7 @@ export function ResidentProvider({ children }: iContextProps) {
 
   const commentsApi = async (id: number) => {
     try {
+
       const response = await api.get<iComments[]>(`/comments?messageId=${id}`);
       setComments(response.data);
     } catch (error) {
