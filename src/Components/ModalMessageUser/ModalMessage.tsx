@@ -3,8 +3,11 @@ export function MessageModal() {
     <div>
       <div>
         <button type="button">X</button>
+        <div>
+          <h3>titulo</h3>
+          <p>descrição</p>
+        </div>
         <form>
-          <input type="text" />
           <button type="submit">Enviar</button>
         </form>
         <div>

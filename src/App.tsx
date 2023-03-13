@@ -1,17 +1,21 @@
-import { Route, Router, RouterProvider } from "react-router-dom";
 import { HomeProvider } from "./Contexts/homeContext";
 import { ResidentProvider } from "./Contexts/residentContext";
-import { GlobalStyles } from "./styles/global";
+import { Router } from "./routes";
+import { GlobalStyles } from "./Styles/global";
+import { UserProvider } from "./Contexts/userContext";
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <ResidentProvider children={undefined}>
-        <HomeProvider children={undefined}>
-          <Route />
-        </HomeProvider>
-      </ResidentProvider>
+
+      <UserProvider>
+        <ResidentProvider>
+          <HomeProvider>
+            <Router />
+          </HomeProvider>
+        </ResidentProvider>
+      </UserProvider>
     </>
   );
 }
