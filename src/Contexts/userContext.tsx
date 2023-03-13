@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import api from "../services/api";
 
 interface IDefaultProviderProps {
@@ -29,28 +30,17 @@ interface IUser {
   id: number;
 }
 
-interface ICondos {
-  name: string;
-  userId: number;
-  id: number;
-}
-
 interface IuserContext {
   userRegister: (data: IRegisterUser) => Promise<void>;
   userLogin: (data: IloginUser) => Promise<void>;
   userLogout: () => void;
-  condo: ICondos[];
-  isAdmin: boolean;
-  setIsAdmin: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const userContext = createContext({} as IuserContext);
+export const UserContext = createContext({} as IuserContext);
 
-export const userProvider = ({ children }: IDefaultProviderProps) => {
+export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null);
-  const [condo, setCondo] = useState<ICondos[]>([]);
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
-
+  
   const navigate = useNavigate();
 
   const userRegister = async (data: IRegisterUser) => {
@@ -66,12 +56,19 @@ export const userProvider = ({ children }: IDefaultProviderProps) => {
 
   const userLogin = async (data: IloginUser) => {
     try {
-      const response = await api.post("signin", data);
+      const response = await api.post("/login", data);
       setUser(response.data.user);
       localStorage.setItem("@Token", response.data.accessToken);
-      localStorage.setItem("@user", response.data.user);
+      const userJson = JSON.stringify(response.data.user);
+      localStorage.setItem("@user", userJson);
 
       toast.success("Login realizado com sucesso!");
+
+      if (response.data.user.is_admin === "false") {
+        navigate("/homeUser");
+      } else if (response.data.user.is_admin === "true") {
+        navigate("/homeAdm");
+      }
     } catch (error) {
       toast.error("Algo deu errado ao logar");
     }
@@ -80,9 +77,16 @@ export const userProvider = ({ children }: IDefaultProviderProps) => {
   const autoLogin = () => {
     const token = localStorage.getItem("@Token");
     if (token) {
-      navigate("/");
-    } else {
-      navigate("/");
+      const userLocal = localStorage.getItem("@user");
+      if (userLocal) {
+        const userJson = JSON.parse(userLocal);
+
+        if (userJson.is_admin === "true") {
+          navigate("/homeAdmin");
+        } else if (userJson.is_admin === "false") {
+          navigate("/homeUser");
+        }
+      }
     }
   };
 
@@ -97,30 +101,9 @@ export const userProvider = ({ children }: IDefaultProviderProps) => {
     navigate("/");
   };
 
-  useEffect(() => {
-    const condos = async () => {
-      try {
-        const response = await api.get("/conds");
-        setCondo(response.data);
-      } catch (error) {
-        toast.error("Algo deu errado ao listar condominios cadastrados");
-      }
-    };
-    condos();
-  }, []);
-
   return (
-    <userContext.Provider
-      value={{
-        userRegister,
-        userLogin,
-        userLogout,
-        isAdmin,
-        setIsAdmin,
-        condo,
-      }}
-    >
+    <UserContext.Provider value={{ userRegister, userLogin, userLogout }}>
       {children}
-    </userContext.Provider>
+    </UserContext.Provider>
   );
 };

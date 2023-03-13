@@ -1,5 +1,6 @@
 import { roles } from "../formSchema";
 import { UseFormRegisterReturn } from "react-hook-form";
+import { FielsetStyled } from "./style";
 
 interface ISelect {
   register: UseFormRegisterReturn<string>;
@@ -9,7 +10,7 @@ interface ISelect {
 export function Select({ register, error }: ISelect) {
   
   return (
-    <fieldset>
+    <FielsetStyled>
       <select {...register}>
         <option value="">Morador ou Síndico?</option>
         {roles.map((role) => (
@@ -19,6 +20,6 @@ export function Select({ register, error }: ISelect) {
         ))}
       </select>
       {error && <p>{error.message}</p>}
-    </fieldset>
+    </FielsetStyled>
   );
 }

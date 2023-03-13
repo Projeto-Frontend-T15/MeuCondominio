@@ -1,4 +1,5 @@
 import { UseFormRegisterReturn } from "react-hook-form";
+import { FieldsetStyled } from "./style";
 
 interface IInput {
   type: string;
@@ -9,10 +10,10 @@ interface IInput {
 
 function Input({ type, register, error, placeholder }: IInput) {
   return (
-    <fieldset>
+    <FieldsetStyled>
       <input type={type} placeholder={placeholder} {...register} />
       {error && <p>{error.message}</p>}
-    </fieldset>
+    </FieldsetStyled>
   );
 }
 export default Input;
