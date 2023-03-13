@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 export const HeaderStyled = styled.header`
+  width: 100%;
   background-color: var(--color-1);
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   h2 {
     font-size: var(--font-size-4);
@@ -36,6 +40,8 @@ export const HeaderStyled = styled.header`
 
 export const MainStyled = styled.main`
   padding: 30px;
+  margin-top: 208px;
+  
   section {
     display: flex;
     flex-direction: column;
