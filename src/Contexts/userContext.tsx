@@ -40,7 +40,7 @@ export const UserContext = createContext({} as IuserContext);
 
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null);
-
+  
   const navigate = useNavigate();
 
   const userRegister = async (data: IRegisterUser) => {

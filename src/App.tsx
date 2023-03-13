@@ -4,7 +4,6 @@ import { Router } from "./routes";
 import { GlobalStyles } from "./styles/global";
 import { UserProvider } from "./Contexts/userContext";
 
-
 function App() {
   return (
     <>
