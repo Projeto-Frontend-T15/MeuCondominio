@@ -3,7 +3,8 @@ export interface iContextProps {
 }
 
 export interface iResidentContext {
-  messages: iMessages[] | undefined;
+  messages: iMessages[];
+  setMessages: React.Dispatch<React.SetStateAction<iMessages[]>>;
   improvements: iImprovement[] | undefined;
   maintenance: iMaintenance[] | undefined;
   cashs: iCashs[] | undefined;
@@ -12,6 +13,7 @@ export interface iResidentContext {
   logout: () => void;
   addComments: (dataComents: iAddComments) => Promise<void>;
   userLogin: iUser;
+  setComments: React.Dispatch<React.SetStateAction<iComments[]>>;
 }
 
 export interface iUser {
