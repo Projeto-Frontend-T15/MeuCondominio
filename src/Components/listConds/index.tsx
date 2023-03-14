@@ -22,7 +22,7 @@ export function ListConds(){
         }
       };
       condos();
-    }, [])
+    }, [condo])
 
 
     const newId: SubmitHandler<Id> = (id: Id) => {

@@ -27,7 +27,8 @@ interface iHomeContext {
   condo: ICondos[];
   setCondo: React.Dispatch<React.SetStateAction<ICondos[]>>;
   newCond: (data: ICondos) => Promise<void>
-  
+  modalNewCond: boolean;
+  setModalNewCond: React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface Id{
   condId: string,
@@ -50,6 +51,8 @@ export function HomeProvider({ children }: iContextProps) {
   const [idCond, setIdCond] = useState<Id | null>(null)
   const [residents, setResidents] = useState<IResident[]>([])
   const [condo, setCondo] = useState<ICondos[]>([]);
+
+  const [modalNewCond, setModalNewCond] = useState(false)
 
   useEffect(() => {
     readAllMenssagens(idCond)
@@ -133,7 +136,7 @@ export function HomeProvider({ children }: iContextProps) {
   const newCond = async (data:ICondos) => {
     const token = localStorage.getItem("@Token")
     try {
-      const response = await api.post("/conds", {
+      const response = await api.post("/conds", data, {
         headers:{
           Authorization: `Bearer ${token}`
         }
@@ -161,7 +164,7 @@ export function HomeProvider({ children }: iContextProps) {
   
 
   return (
-    <HomeContext.Provider value={{messagesRegister, deleteMessagens, modal, setModal, readAllMenssagens, idCond, setIdCond, readAllComents, residents, readAllResident,condo, setCondo, newCond}}>
+    <HomeContext.Provider value={{messagesRegister, deleteMessagens, modal, setModal, readAllMenssagens, idCond, setIdCond, readAllComents, residents, readAllResident,condo, setCondo, newCond, modalNewCond, setModalNewCond}}>
       {children}
       </HomeContext.Provider>
   );
