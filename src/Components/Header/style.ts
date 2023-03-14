@@ -31,6 +31,10 @@ background-color: var(--color-1);
     justify-content: center;
     align-items: center;
     transition: transform 0.2s ease-in-out;
+
+    @media (max-width: 769px) {
+      padding: 0.625rem 1.25rem;
+    }
   }
 
   button:hover {
@@ -44,6 +48,18 @@ background-color: var(--color-1);
     display: flex;
     color: var(--color-4);
     margin-right: 10px;
+
+    @media (max-width: 769px) {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 769px) {
+    flex-direction: column;
+    gap: 10px;
   }
 `;
 
