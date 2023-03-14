@@ -13,7 +13,7 @@ export const StyledModalComments = styled.div`
   justify-content: space-around;
 
   dialog {
-    width: 400px;
+    max-width: 400px;
     padding: 10px 10px;
     border-radius: 8px;
 

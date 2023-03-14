@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const StyledHeader = styled.header`
 display: flex;
 flex-direction: row;
-align-content: center;
+
 align-items: center;
-justify-content: flex-end;
+justify-content: space-around;
 width: 100%;
-justify-content: space-between;
+
 padding: 1rem;
 background-color: var(--color-1);
 
@@ -44,10 +44,11 @@ background-color: var(--color-1);
     justify-content: space-evenly;
     color: var(--color-4);
     margin-right: 10px;
+    gap: 10px;
 
     @media (max-width: 769px) {
       width: 100%;
-      flex-direction: column;
+      flex-wrap: wrap;
       align-items: center;
       gap: 10px;
     }

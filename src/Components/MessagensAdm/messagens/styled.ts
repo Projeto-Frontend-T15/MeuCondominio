@@ -8,7 +8,7 @@ export const StyledLiMessages = styled.li`
   gap: 10px;
   padding: 10px 10px;
   border-radius: 10px;
-  width: 450px;
+  width: 90vw;
 
   h1 {
     font-weight: var(--font-weight-5);
@@ -32,5 +32,8 @@ export const StyledLiMessages = styled.li`
       height: 40px;
       border-radius: 8px;
     }
+  }
+  @media(min-width: 769px){
+    width: 600px; 
   }
 `;

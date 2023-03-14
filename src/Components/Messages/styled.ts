@@ -3,15 +3,16 @@ import styled from "styled-components";
 export const MessagesStyled = styled.section`
 .menu--container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
 
 }
 .menu--container__messages{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
 }
 .btn-createMess{
@@ -26,6 +27,13 @@ export const MessagesStyled = styled.section`
     color: var(--color-white);
 
 
+}
+@media (min-width: 769px){
+    .menu--container{
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 140px;
+    }
 }
 
 `

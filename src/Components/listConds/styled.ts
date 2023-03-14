@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
 export const StyledForm = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 
   form {
+    display: flex;
+    flex-direction: row;
     gap: 10px;
     select {
-      width: 200px;
+      width: 190px;
       margin-left: 3%;
       border-radius: 6px;
       border: 1px solid var(--color-6);
@@ -19,7 +18,7 @@ export const StyledForm = styled.div`
       border: none;
     }
     button {
-      width: 120px;
+      width: 100px;
       height: 40px;
       background-color: var(--color-5);
       border-radius: var(--radius-1);

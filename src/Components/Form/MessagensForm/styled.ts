@@ -15,18 +15,23 @@ export const StyledFormeMessages = styled.div`
     background-color: white;
     display: flex;
     flex-direction: column;
-
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: white;
     padding: 10px 10px;
 
     border-radius: 8px;
 
+    max-width: 440px;
+    width: 80vw;
+    gap: 10px;
+    height: 350px;
+
+    height: 400px;
     div{
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-around;
       h2{
         font-weight: var(--font-weight-2);
         font-size: var(--font-size-2);
@@ -40,9 +45,13 @@ export const StyledFormeMessages = styled.div`
 
     form {
    
-
+      display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
       input {
-        width: 90vw;
+        width: 70vw;
+        max-width: 400px;
         height: 40px;
         border: 1px solid;
 
@@ -56,7 +65,9 @@ export const StyledFormeMessages = styled.div`
         border-radius: 10px;
       }
       input:nth-child(2n) {
-        width: 90vw;
+       
+        width: 70vw;
+        max-width: 400px;
         height: 200px;
         border-radius: 10px;
       }
@@ -77,20 +88,7 @@ export const StyledFormeMessages = styled.div`
         border: 1px solid var(--color-5);
       }
 
-      @media (min-width: 769px) {
-        align-items: flex-start;
-        width: 450px;
-        height: 440px;
-        justify-content: space-between;
-        input {
-          width: 400px;
-          height: 60px;
-        }
-        input:nth-child(2n) {
-          width: 400px;
-          height: 400px;
-        }
-      }
+      
     }
   }
 `;
