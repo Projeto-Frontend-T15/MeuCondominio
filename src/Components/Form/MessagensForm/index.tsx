@@ -6,46 +6,60 @@ import { iMessages } from "../../../Contexts/interfacesResident";
 import { StyledFormeMessages } from "./styled";
 import { schema } from "./validations";
 
-
-interface IRegisterMessages{
-    title: string;
-    descripiton: string;
-    condId: string;
-    userId: number;
+interface IRegisterMessages {
+  title: string;
+  descripiton: string;
+  condId: string;
+  userId: number;
 }
-interface Message{
-    title: string;
-    descripiton: string;
+interface Message {
+  title: string;
+  descripiton: string;
 }
 
+export function RegisterMessages() {
+  const { messagesRegister, condID, setShowCreateImp } = useContext(HomeContext);
+  
 
-export function RegisterMessages(){
+  const { register, handleSubmit } = useForm({ resolver: yupResolver(schema) });
 
-    const {messagesRegister, idCond} = useContext(HomeContext)
+  const userId = JSON.parse(localStorage.getItem("@user")).id;
 
-    const { register, handleSubmit} = useForm({resolver: yupResolver(schema)})
+  const condId = condID;
 
-    const userId = JSON.parse(localStorage.getItem("@user")).id
+  const ids = { condId, userId };
 
-    const condId = idCond
-    
-    const ids = {...condId, userId}
-    
-    
-    const submitMessage: SubmitHandler<IRegisterMessages>  = (data: Message) => {
-        const i = {...data, ...ids}
-        messagesRegister(i)
-    }
+  const submitMessage: SubmitHandler<IRegisterMessages> = (data: Message) => {
+    const i = { ...data, ...ids };
+    messagesRegister(i);
+    setShowCreateImp(false)
+  };
 
-    return(
+  return (
+    <StyledFormeMessages>
+      <dialog>
+      <div>
+            <h1>Registar Recado</h1>
+            <button onClick={() => {setShowCreateImp(false)}}>x</button>
 
-        <StyledFormeMessages onSubmit={handleSubmit(submitMessage)}>
+        </div>
+        <form onSubmit={handleSubmit(submitMessage)}>
+          <input
+            type="text"
+            placeholder="Titulo do Recado"
+            {...register("title")}
+          />
 
-            <input type="text" placeholder="Titulo do Recado" {...register("title")}  />
-           
-            <input type="text" placeholder="Descrição do Recado" {...register("descripiton")} />
-            
-            <button type="submit">Registrar Recado</button>
-        </StyledFormeMessages>
-    )
+          <input
+            type="text"
+            placeholder="Descrição do Recado"
+            {...register("descripiton")}
+          />
+
+          <button type="submit">Registrar Recado</button>
+        </form>
+      </dialog>
+    </StyledFormeMessages>
+  );
 }
+

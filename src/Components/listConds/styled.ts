@@ -1,23 +1,31 @@
 import styled from "styled-components";
 
 export const StyledForm = styled.div`
-  margin: 1rem;
-  border: none;
-  border-radius: 6px;
-  width: 50%;
-  .select{
-    width: 50%;
-    margin-left: 3%;
-    border-radius: 6px;
-    border: 1px solid var(--color-6);
-    padding: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  form {
+    gap: 10px;
+    select {
+      width: 200px;
+      margin-left: 3%;
+      border-radius: 6px;
+      border: 1px solid var(--color-6);
+      padding: 0.5rem;
+
+    }
+    option {
+      border: none;
+    }
+    button {
+      width: 120px;
+      height: 40px;
+      background-color: var(--color-5);
+      border-radius: var(--radius-1);
+      font-size: var(--font-size-2);
+      font-weight: var(--font-weight-3);
+      color: var(--color-white);
+    }
   }
-  option{
-    border: none;
-  }
-  button{
-    padding: 1rem;
-    width: auto;
-  }
-  
 `;

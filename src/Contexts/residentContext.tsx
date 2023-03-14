@@ -37,7 +37,6 @@ export function ResidentProvider({ children }: iContextProps) {
   const { condID } = useContext(HomeContext);
 
   const navegate = useNavigate();
-  console.log(maintenance)
 
   const messageApi = async () => {
     const idCond = userLogin.condId;
@@ -47,9 +46,7 @@ export function ResidentProvider({ children }: iContextProps) {
         `/messages?condId=${idCond}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
       setMessages(response.data);
-      console.log(messages)
     } catch (error) {
       toast.error("Algo deu errado ao listar recados");
     }

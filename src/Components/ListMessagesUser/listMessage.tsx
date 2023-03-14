@@ -10,6 +10,8 @@ export function ListMessagesUserPage() {
     messageApi();
   }, []);
 
+  console.log(messages)
+
   return (
     <UlStyled>
       <h2>Quadro de recados</h2>

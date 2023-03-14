@@ -1,6 +1,5 @@
 import styled from "styled-components";
-
-export const StyledFormeMessages = styled.div`
+export const StyledModalCreateCond = styled.div`
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
@@ -11,27 +10,29 @@ export const StyledFormeMessages = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
   dialog {
-    background-color: white;
     display: flex;
     flex-direction: column;
-
+    
     justify-content: space-between;
     background-color: white;
+
+    width: 400px;
+    height: 150px;
     padding: 10px 10px;
 
     border-radius: 8px;
-
-    div{
+    div {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      h2{
+      h1 {
         font-weight: var(--font-weight-2);
         font-size: var(--font-size-2);
       }
-      button{
+      button {
         background-color: white;
         font-weight: var(--font-weight-5);
         font-size: var(--font-size-2);
@@ -39,34 +40,26 @@ export const StyledFormeMessages = styled.div`
     }
 
     form {
-   
-
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 10px 10px;
+      gap: 10px;
       input {
-        width: 90vw;
-        height: 40px;
+        width: 300px;
+        height: 30px;
         border: 1px solid;
-
-        padding: 10px;
-        text-align: start;
-        border: none;
-        background-color: var(--color-7);
-
-        color: var(--color-8);
-        font-weight: var(--font-weight-5);
-        border-radius: 10px;
-      }
-      input:nth-child(2n) {
-        width: 90vw;
-        height: 200px;
-        border-radius: 10px;
+        padding: 10px 10px;
       }
       input:focus {
         outline: none;
       }
+
       button {
         background-color: var(--color-5);
         width: 150px;
-        height: 40px;
+        height: 30px;
         border-radius: 8px;
 
         font-weight: var(--font-weight-5);
@@ -76,21 +69,7 @@ export const StyledFormeMessages = styled.div`
         color: var(--color-5);
         border: 1px solid var(--color-5);
       }
-
-      @media (min-width: 769px) {
-        align-items: flex-start;
-        width: 450px;
-        height: 440px;
-        justify-content: space-between;
-        input {
-          width: 400px;
-          height: 60px;
-        }
-        input:nth-child(2n) {
-          width: 400px;
-          height: 400px;
-        }
-      }
     }
   }
 `;
+
