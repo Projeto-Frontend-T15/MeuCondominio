@@ -1,9 +1,10 @@
-import { Header } from "../headerPageUser/header";
+import Header from "../Header/header";
+
 
 
 const InterfaceCard = () => (
   <>
-    <Header />
+    <Header home={false} />
   </>
 );
 
