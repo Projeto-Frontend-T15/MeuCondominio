@@ -36,7 +36,7 @@ export const HomeContext = createContext({} as iHomeContext);
 
 export function HomeProvider({ children }: iContextProps) {
 
-  const {messages, setMessages, setComments} = useContext(ResidentContext)
+  const {messages, setMessages, setComments, setCashs} = useContext(ResidentContext)
   const [modal, setModal] = useState(false)
   const [idCond, setIdCond] = useState<Id | null>(null)
   const [residents, setResidents] = useState<IResident[]>([])
@@ -69,9 +69,9 @@ export function HomeProvider({ children }: iContextProps) {
           Authorization: `Bearer ${token}`
         }
       })
-      console.log(response)
+      toast.success("Recado deletado com sucesso")
     } catch (error) {
-      console.log(error)
+      toast.error("Algo deu errado!")
     }
   }
 
@@ -120,8 +120,24 @@ export function HomeProvider({ children }: iContextProps) {
     }
   }
   
+  // const cachsCond = async () => {
+  //   const token = localStorage.getItem("@Token")
+  //   try {
+  //     const response = await api.post("/cashs", {
+  //       headers:{
+  //         Authorization: `Bearer ${token}`
+  //       }
+  //     })
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
   
 
-  return <HomeContext.Provider value={{messagesRegister, deleteMessagens, modal, setModal, readAllMenssagens, idCond, setIdCond, readAllComents, residents, readAllResident}}>{children}</HomeContext.Provider>;
+  return (
+    <HomeContext.Provider value={{messagesRegister, deleteMessagens, modal, setModal, readAllMenssagens, idCond, setIdCond, readAllComents, residents, readAllResident}}>
+      {children}
+      </HomeContext.Provider>
+  );
 }
 

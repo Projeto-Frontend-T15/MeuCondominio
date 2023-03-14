@@ -10,6 +10,7 @@ const ListResident = () => {
   useEffect(() => {
     readAllResident(id);
   }, [idCond]);
+
   return (
     <>
     <h2>Moradores</h2>
