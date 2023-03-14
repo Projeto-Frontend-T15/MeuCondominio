@@ -1,4 +1,4 @@
-import { CardMaintenance } from "../../Components/CardMaintenance/maintenance";
+import { CardMaintenance } from "../../Components/CardMaintenance/cardMaintenance";
 import Header from "../../Components/Header/header";
 import { ListMessagesUserPage } from "../../Components/ListMessagesUser/listMessage";
 

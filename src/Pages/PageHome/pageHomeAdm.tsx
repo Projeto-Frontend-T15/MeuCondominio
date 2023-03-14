@@ -1,6 +1,6 @@
 import { CondoPage } from "../../Components/Condo/CondoPage";
 import Header from "../../Components/Header/header";
-import { MaintenancePage } from "../../Components/Maintenance/MaintenancePage";
+import { ImprovementsPage } from "../../Components/Maintenance/MaintenancePage";
 import { MessagePage } from "../../Components/Messages/MessagesPage";
 import { MainStyled } from "./styled";
 
@@ -12,7 +12,7 @@ const HomeAdm = () => {
         <div className="container_components">
           <CondoPage />
           <MessagePage />
-          <MaintenancePage />
+          <ImprovementsPage />
         </div>
       </MainStyled>
     </>
