@@ -5,12 +5,14 @@ import { RegisterMessages } from "../Form/MessagensForm";
 import { ListConds } from "../listConds";
 import { ReadMessages } from "../MessagensAdm";
 import { StyledDivMessagens } from "../MessagensAdm/styled";
+import { ModalComents } from "../ModalComents";
 import { CardMessageUser } from "./CardMessagesUser/cardMessageUser";
 import { MessagesStyled } from "./styled";
 
 export const MessagePage = () => {
   const { messages, comments } = useContext(ResidentContext);
   const {
+    modal,
     idCond,
     deleteMessagens,
     messagesRegister,
@@ -32,7 +34,7 @@ export const MessagePage = () => {
         </div>
         
 
-        <button
+        <button className="btn-createMess"
           onClick={() => {
             setShowCreateImp(true);
           }}
@@ -41,6 +43,7 @@ export const MessagePage = () => {
 
         {messages && <ReadMessages />}
         { showCreateImp &&<RegisterMessages />}
+        {modal && <ModalComents />}
       </MessagesStyled>
     </>
   );

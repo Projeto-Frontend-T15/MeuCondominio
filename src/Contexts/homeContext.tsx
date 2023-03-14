@@ -84,6 +84,9 @@ export function HomeProvider({ children }: iContextProps) {
   const [condID, setCondID] = useState(0);
   const [showCreateImp, setShowCreateImp] = useState(false);
 
+  useEffect(() => {
+    readAllMessages(condID);
+  }, [messages]);
   
 
   const readCash = async () => {
@@ -187,8 +190,9 @@ export function HomeProvider({ children }: iContextProps) {
         },
       });
       setMessages(response.data);
+      toast.success("Recado cadastrado com sucesso")
     } catch (error) {
-      console.log(error);
+      toast.error("Algo deu errado!")
     }
   };
   const newCond = async (data: ICondos) => {

@@ -19,7 +19,7 @@ interface Message {
 
 export function RegisterMessages() {
   const { messagesRegister, condID, setShowCreateImp } = useContext(HomeContext);
-  console.log(condID)
+  
 
   const { register, handleSubmit } = useForm({ resolver: yupResolver(schema) });
 
@@ -37,7 +37,6 @@ export function RegisterMessages() {
 
   return (
     <StyledFormeMessages>
-
       <dialog>
       <div>
             <h1>Registar Recado</h1>
