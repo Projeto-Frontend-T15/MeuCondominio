@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import api from "../services/api";
 import {
   iResidentContext,
@@ -43,21 +45,25 @@ export function ResidentProvider({ children }: iContextProps) {
 
       setMessages(response.data);
     } catch (error) {
-      console.log(error);
+      toast.error("Algo deu errado ao listar recados");
     }
   };
 
+
   const maintenanceApi = async () => {
     const idCond = userLogin.condId;
+    const token = localStorage.getItem("@Token");
     try {
       const response = await api.get<iMaintenance[]>(
-        `/maintenance?condId=${idCond}`
+        `/maintenance?condId=${idCond}`,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       setMaintenance(response.data);
     } catch (error) {
-      console.log(error);
+      toast.error("Algo deu errado ao listar prestadores de serviço");
     }
   };
+
 
   const improvementsApi = async () => {
     const idCond = userLogin.condId;
@@ -123,6 +129,7 @@ export function ResidentProvider({ children }: iContextProps) {
         addComments,
         userLogin,
         messageApi,
+        maintenanceApi
       }}
     >
       {children}

@@ -16,7 +16,7 @@ export interface iResidentContext {
   setComments: React.Dispatch<React.SetStateAction<iComments[]>>;
   messageApi: () => Promise<void>;
   setCashs: React.Dispatch<React.SetStateAction<iCashs[]>>;
-
+  maintenanceApi: () => Promise<void>;
 }
 
 export interface iUser {

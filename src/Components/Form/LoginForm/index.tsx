@@ -12,6 +12,7 @@ export function Login() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<IloginUser>({
     resolver: yupResolver(formSchema),
@@ -19,6 +20,7 @@ export function Login() {
 
   const submit: SubmitHandler<IloginUser> = (data) => {
     userLogin(data);
+    reset();
   };
 
   return (

@@ -1,12 +1,15 @@
 import { iMessages } from "../../Contexts/interfacesResident";
+import { LiStyled } from "./style";
 
 export function MessagePageUser({ title, descripiton }: iMessages) {
   return (
-    <li>
-      <h2>{title}</h2>
+    <LiStyled>
+      <h3>{title}</h3>
       <p>{descripiton}</p>
-      <button type="button">Responder</button>
-      <button type="button">Comentários</button>
-    </li>
+      <div>
+        <button>Responder</button>
+        <button>Comentários</button>
+      </div>
+    </LiStyled>
   );
 }

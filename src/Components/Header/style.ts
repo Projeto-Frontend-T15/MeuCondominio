@@ -10,6 +10,10 @@ width: 100%;
 justify-content: space-between;
 padding: 1rem;
 background-color: var(--color-1);
+position: fixed;
+top: 0;
+left: 0;
+
   h1 {
     font-size: var(--font-size-4);
     font-weight: var(--font-weight-4);
@@ -17,19 +21,12 @@ background-color: var(--color-1);
   }
 
   button {
-    width: 36%;
-    padding: 2%;
-    background-color: var(--color-2);
-    color: var(--color-white);
-    border-radius: var(--radius-1);
     font-size: var(--font-size-1);
     font-weight: var(--font-weight-3);
+    padding: 0.625rem 1.25rem;
     color: var(--color-white);
-    height: 30%;
-    margin-left: 3%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: var(--color-2);
+    border-radius: var(--radius-1);
     transition: transform 0.2s ease-in-out;
 
     @media (max-width: 769px) {
@@ -43,9 +40,10 @@ background-color: var(--color-1);
   }
 
   .buttons{
-    width: 50%;
-    height: 40%;
+    width: 35%;
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     color: var(--color-4);
     margin-right: 10px;
 
