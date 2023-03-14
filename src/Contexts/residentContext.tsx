@@ -26,11 +26,8 @@ export function ResidentProvider({ children }: iContextProps) {
   const [comments, setComments] = useState<iComments[]>([]);
   const [modalMessage, setModalMessage] = useState(false);
   const [readMessage, setReadMessage] = useState<iMessages>();
-<<<<<<< HEAD
-=======
   const [modal, setModal] = useState(false);
 
->>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
   const userLoginLocal = localStorage.getItem("@user");
   const [userLogin, setUserLogin] = useState<iUser>(
     userLoginLocal ? JSON.parse(userLoginLocal) : []
@@ -141,13 +138,10 @@ export function ResidentProvider({ children }: iContextProps) {
         addComments,
         userLogin,
         messageApi,
-<<<<<<< HEAD
         setImprovements,
-=======
         maintenanceApi,
         modal,
         setModal,
->>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
       }}
     >
       {children}

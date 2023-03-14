@@ -16,14 +16,11 @@ export interface iResidentContext {
   setComments: React.Dispatch<React.SetStateAction<iComments[]>>;
   messageApi: () => Promise<void>;
   setCashs: React.Dispatch<React.SetStateAction<iCashs[]>>;
-<<<<<<< HEAD
   improvementsApi: () => void;
   setImprovements: React.Dispatch<React.SetStateAction<iImprovement[]>>;
-=======
   maintenanceApi: () => Promise<void>;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   modal: boolean;
->>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
 }
 
 export interface iUser {
@@ -40,7 +37,7 @@ export interface iMessages {
   title: string;
   descripiton: string;
   id: number;
-  condID?:number;
+  condID?: number;
 }
 export interface iMaintenance {
   userId: number;
