@@ -26,6 +26,7 @@ export const StyledFormeMessages = styled.div`
     gap: 10px;
     height: 350px;
 
+    
     height: 400px;
     div{
       display: flex;
