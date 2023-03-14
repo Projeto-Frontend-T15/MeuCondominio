@@ -37,7 +37,6 @@ export interface iMessages {
   title: string;
   descripiton: string;
   id: number;
-  condID?: number;
 }
 export interface iMaintenance {
   userId: number;
