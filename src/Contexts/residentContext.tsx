@@ -1,8 +1,9 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import api from "../services/api";
+import { HomeContext } from "./homeContext";
 import {
   iResidentContext,
   iContextProps,
@@ -25,12 +26,17 @@ export function ResidentProvider({ children }: iContextProps) {
   const [comments, setComments] = useState<iComments[]>([]);
   const [modalMessage, setModalMessage] = useState(false);
   const [readMessage, setReadMessage] = useState<iMessages>();
+<<<<<<< HEAD
+=======
   const [modal, setModal] = useState(false);
 
+>>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
   const userLoginLocal = localStorage.getItem("@user");
   const [userLogin, setUserLogin] = useState<iUser>(
     userLoginLocal ? JSON.parse(userLoginLocal) : []
   );
+
+  const { condID } = useContext(HomeContext);
 
   const navegate = useNavigate();
   console.log(maintenance)
@@ -39,13 +45,13 @@ export function ResidentProvider({ children }: iContextProps) {
     const idCond = userLogin.condId;
     const token = localStorage.getItem("@Token");
     try {
-
       const response = await api.get<iMessages[]>(
         `/messages?condId=${idCond}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
       setMessages(response.data);
+      console.log(messages)
     } catch (error) {
       toast.error("Algo deu errado ao listar recados");
     }
@@ -68,16 +74,20 @@ export function ResidentProvider({ children }: iContextProps) {
 
 
   const improvementsApi = async () => {
-    const idCond = userLogin.condId;
+    const token = localStorage.getItem("@Token");
     try {
       const response = await api.get<iImprovement[]>(
-        `/improvements?condId=${idCond}`
+        `/improvements?condId=${condID}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
       setImprovements(response.data);
     } catch (error) {
       console.log(error);
     }
   };
+  
 
   const cashsApi = async () => {
     const idCond = userLogin.condId;
@@ -93,7 +103,6 @@ export function ResidentProvider({ children }: iContextProps) {
 
   const commentsApi = async (id: number) => {
     try {
-
       const response = await api.get<iComments[]>(`/comments?messageId=${id}`);
       setComments(response.data);
     } catch (error) {
@@ -119,6 +128,7 @@ export function ResidentProvider({ children }: iContextProps) {
     <ResidentContext.Provider
       value={{
         messages,
+        improvementsApi,
         setMessages,
         improvements,
         maintenance,
@@ -131,9 +141,13 @@ export function ResidentProvider({ children }: iContextProps) {
         addComments,
         userLogin,
         messageApi,
+<<<<<<< HEAD
+        setImprovements,
+=======
         maintenanceApi,
         modal,
         setModal,
+>>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
       }}
     >
       {children}

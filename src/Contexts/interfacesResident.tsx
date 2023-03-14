@@ -7,7 +7,7 @@ export interface iResidentContext {
   setMessages: React.Dispatch<React.SetStateAction<iMessages[]>>;
   improvements: iImprovement[] | undefined;
   maintenance: iMaintenance[] | undefined;
-  cashs: iCashs[] | undefined;
+  cashs: iCashs[] | [];
   commentsApi: (id: number) => Promise<void>;
   comments: iComments[] | undefined;
   logout: () => void;
@@ -16,9 +16,14 @@ export interface iResidentContext {
   setComments: React.Dispatch<React.SetStateAction<iComments[]>>;
   messageApi: () => Promise<void>;
   setCashs: React.Dispatch<React.SetStateAction<iCashs[]>>;
+<<<<<<< HEAD
+  improvementsApi: () => void;
+  setImprovements: React.Dispatch<React.SetStateAction<iImprovement[]>>;
+=======
   maintenanceApi: () => Promise<void>;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   modal: boolean;
+>>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
 }
 
 export interface iUser {
@@ -29,13 +34,13 @@ export interface iUser {
   id: number;
 }
 
-
 export interface iMessages {
   userId: number;
   condId: number;
   title: string;
   descripiton: string;
   id: number;
+  condID?:number;
 }
 export interface iMaintenance {
   userId: number;
@@ -71,4 +76,20 @@ export interface iComments {
   messageId: number;
   comment: string;
   id: number;
+}
+export interface iCardImprovement {
+  title: string;
+  description: string;
+  id: number;
+  key?: number;
+}
+export interface iCardCash {
+  title: string;
+  price: number;
+
+  id: number;
+}
+export interface iCardResident {
+  name: string;
+  email: string;
 }

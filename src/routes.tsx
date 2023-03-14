@@ -1,5 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import HomeAdm from "./Pages/PageHome/pageHomeAdm";
+<<<<<<< HEAD
+
+=======
+>>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
 import LandingPage from "./Pages/PageLanding";
 import LoginPage from "./Pages/PageLogin";
 import HomeUser from "./Pages/PageUser";
