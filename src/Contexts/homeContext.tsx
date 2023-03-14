@@ -8,6 +8,11 @@ import { ResidentContext } from "./residentContext";
 export interface iContextProps {
   children: React.ReactNode;
 }
+interface ICondos {
+  name: string;
+  userId: number;
+  id: number;
+}
 interface iHomeContext {
   messagesRegister: (data: iMessages) => Promise<void>;
   deleteMessagens: (id: number) => Promise<void>;
@@ -19,6 +24,10 @@ interface iHomeContext {
   readAllComents: (id: any) => Promise<void>;
   residents: IResident[];
   readAllResident: (id: any) => Promise<void>;
+  condo: ICondos[];
+  setCondo: React.Dispatch<React.SetStateAction<ICondos[]>>;
+  newCond: (data: ICondos) => Promise<void>
+  
 }
 interface Id{
   condId: string,
@@ -40,6 +49,7 @@ export function HomeProvider({ children }: iContextProps) {
   const [modal, setModal] = useState(false)
   const [idCond, setIdCond] = useState<Id | null>(null)
   const [residents, setResidents] = useState<IResident[]>([])
+  const [condo, setCondo] = useState<ICondos[]>([]);
 
   useEffect(() => {
     readAllMenssagens(idCond)
@@ -119,6 +129,22 @@ export function HomeProvider({ children }: iContextProps) {
         console.log(error)
     }
   }
+
+  const newCond = async (data:ICondos) => {
+    const token = localStorage.getItem("@Token")
+    try {
+      const response = await api.post("/conds", {
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
+      toast.success("Novo condominio cadastrado com sucesso")
+      setCondo(response.data)
+      
+    } catch (error) {
+      toast.error("Algo deu errado!")
+    }
+  }
   
   // const cachsCond = async () => {
   //   const token = localStorage.getItem("@Token")
@@ -135,7 +161,7 @@ export function HomeProvider({ children }: iContextProps) {
   
 
   return (
-    <HomeContext.Provider value={{messagesRegister, deleteMessagens, modal, setModal, readAllMenssagens, idCond, setIdCond, readAllComents, residents, readAllResident}}>
+    <HomeContext.Provider value={{messagesRegister, deleteMessagens, modal, setModal, readAllMenssagens, idCond, setIdCond, readAllComents, residents, readAllResident,condo, setCondo, newCond}}>
       {children}
       </HomeContext.Provider>
   );
