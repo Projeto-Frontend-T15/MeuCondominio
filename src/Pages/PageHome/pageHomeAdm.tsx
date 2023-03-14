@@ -1,3 +1,6 @@
+
+import { useContext } from "react";
+
 import { CondoPage } from "../../Components/Condo/CondoPage";
 import { ImprovementsPage } from "../../Components/Maintenance/MaintenancePage";
 import { MessagePage } from "../../Components/Messages/MessagesPage";
@@ -8,10 +11,7 @@ import { ModalComents } from "../../Components/ModalComents";
 import ModalCreateCond from "../../Components/ModalCreateCond";
 import { ResidentContext } from "../../Contexts/residentContext";
 import { MainStyled } from "./styled";
-import { useContext } from "react";
 import Header from "../../Components/Header/header";
-import { RegisterMessages } from "../../Components/Form/MessagensForm";
-import { Maintenance } from "../../Components/Maintenance";
 
 const HomeAdm = () => {
   const { showCondo, showMessages, showImprovements, setShowCondo, setShowImprovements, setShowMessages } = useContext(HomeContext);
@@ -38,7 +38,7 @@ const HomeAdm = () => {
 
   return (
     <>
-      <Header buttons={buttons} />
+      <Header home={true} />
       <MainStyled>
         <div className="container_components">
           {showCondo && <CondoPage />}

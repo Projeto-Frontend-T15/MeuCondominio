@@ -4,6 +4,7 @@ import { HomeContext } from "../../Contexts/homeContext";
 import { StyledForm } from "./styled";
 
 export function ListConds() {
+
   const { register, handleSubmit } = useForm();
   const { condo, condID, setCondID, getAllCondos, getResidents, residents,readAllMessages } =
     useContext(HomeContext);
@@ -15,10 +16,18 @@ export function ListConds() {
 
   const selectRef = useRef(0);
 
+/*
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const selectedCondID = Number(selectRef.current.value);
+    setCondID(selectedCondID);
+    readAllMessages(selectedCondID)
+*/
   const handleSearch = () => {
     const selectedCondID = Number(selectRef.current.value);
     setCondID(selectedCondID);
-    readAllMessages()
+    readAllMessages(selectedCondID)
+
     getResidents();
   };
 

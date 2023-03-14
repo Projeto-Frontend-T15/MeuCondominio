@@ -20,46 +20,34 @@ export const MessagePage = () => {
     setShowCreateImp,
     showCreateImp,
   } = useContext(HomeContext);
-  useEffect(() => {
-    readAllMessages();
-  }, []);
+ 
   // renderizar mensagens, com comentarios em baixo, possibilidade para excluir mensagens e formulario para adicionar novas
   return (
     <>
       <MessagesStyled>
         <div className="menu--container">
-        <div className="menu--container__messages">
-          <h1>Recados</h1>
-          <ListConds />
-        </div>
-        
 
-        <button className="btn-createMess"
-          onClick={() => {
-            setShowCreateImp(true);
-          }}
-        >Criar Recado</button>
+          <div className="menu--container__messages">
+            <h1>Recados</h1>
+            <ListConds />
+          </div>
+
+          <button
+            className="btn-createMess"
+            onClick={() => {
+              setShowCreateImp(true);
+            }}
+          >
+            Criar Recado
+          </button>
         </div>
 
         {messages && <ReadMessages />}
-        { showCreateImp &&<RegisterMessages />}
+        {showCreateImp && <RegisterMessages />}
+
         {modal && <ModalComents />}
       </MessagesStyled>
     </>
   );
 };
-// .map((message) => {
-//   return (
-//     <>
-//       <ul>
-//         <CardMessageUser
-//           title={message.title}
-//           description={message.descripiton}
-//           id={message.id}
-//           key={message.id}
-//           condID={message.condID}
-//         />
-//       </ul>
-//     </>
-//   );
-// })
+

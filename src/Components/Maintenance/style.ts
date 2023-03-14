@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const UlStyled = styled.ul`
+export const ImprovementsStyled = styled.div`
   width: 80%;
 
   h2 {

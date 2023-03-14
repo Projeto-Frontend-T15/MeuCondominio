@@ -7,7 +7,6 @@ import { useContext } from "react";
 import { ResidentContext } from "../../Contexts/residentContext";
 import { ModalProfile } from "../../Components/ModalProfile";
 
-
 const HomeUser = () => {
   const { logout, setModal, modal } = useContext(ResidentContext);
 
@@ -19,7 +18,7 @@ const HomeUser = () => {
 
   return (
     <>
-      <Header buttons={buttons}/>
+      <Header home={true}/>
       {modal && <ModalProfile/>}
       <MainStyled>
         <SectionStyled>

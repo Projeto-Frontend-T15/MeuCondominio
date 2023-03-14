@@ -49,7 +49,6 @@ export function RegisterMessages() {
             placeholder="Titulo do Recado"
             {...register("title")}
           />
-
           <input
             type="text"
             placeholder="Descrição do Recado"
