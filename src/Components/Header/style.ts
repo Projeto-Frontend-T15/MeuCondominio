@@ -40,7 +40,7 @@ left: 0;
   }
 
   .buttons{
-    width: 35%;
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;

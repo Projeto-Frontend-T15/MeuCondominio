@@ -25,6 +25,7 @@ export function ResidentProvider({ children }: iContextProps) {
   const [comments, setComments] = useState<iComments[]>([]);
   const [modalMessage, setModalMessage] = useState(false);
   const [readMessage, setReadMessage] = useState<iMessages>();
+  const [modal, setModal] = useState(false);
 
   const userLoginLocal = localStorage.getItem("@user");
   const [userLogin, setUserLogin] = useState<iUser>(
@@ -32,6 +33,7 @@ export function ResidentProvider({ children }: iContextProps) {
   );
 
   const navegate = useNavigate();
+  console.log(maintenance)
 
   const messageApi = async () => {
     const idCond = userLogin.condId;
@@ -129,7 +131,9 @@ export function ResidentProvider({ children }: iContextProps) {
         addComments,
         userLogin,
         messageApi,
-        maintenanceApi
+        maintenanceApi,
+        modal,
+        setModal,
       }}
     >
       {children}

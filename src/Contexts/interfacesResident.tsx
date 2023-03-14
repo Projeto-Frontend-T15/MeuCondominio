@@ -17,6 +17,8 @@ export interface iResidentContext {
   messageApi: () => Promise<void>;
   setCashs: React.Dispatch<React.SetStateAction<iCashs[]>>;
   maintenanceApi: () => Promise<void>;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  modal: boolean;
 }
 
 export interface iUser {
@@ -62,7 +64,7 @@ export interface iCashs {
 export interface iAddComments {
   userId: number;
   messageId: number;
-  commen: string;
+  comment: string;
 }
 export interface iComments {
   userId: number;
