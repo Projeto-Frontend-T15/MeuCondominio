@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { HomeContext } from "../../Contexts/homeContext";
 import { ResidentContext } from "../../Contexts/residentContext";
 import { StyledHeader } from "./style";
 
@@ -8,6 +9,8 @@ interface IHeader {
 
 const Header = ({ home }: IHeader) => {
   const { logout } = useContext(ResidentContext);
+  const { setShowCondo, setShowImprovements, setShowMessages } =
+    useContext(HomeContext);
 
   const handleLogout = () => {
     logout();
@@ -21,9 +24,36 @@ const Header = ({ home }: IHeader) => {
           <button type="button">Entrar</button>
         ) : (
           <>
-            <button type="button">Condomínio</button>
-            <button type="button">Manutenção</button>
-            <button type="button">Recados</button>
+            <button
+              type="button"
+              onClick={() => {
+                setShowMessages(false);
+                setShowImprovements(false);
+                setShowCondo(true);
+              }}
+            >
+              Condomínio
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setShowMessages(false);
+                setShowImprovements(true);
+                setShowCondo(false);
+              }}
+            >
+              Manutenção
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setShowMessages(true);
+                setShowImprovements(false);
+                setShowCondo(false);
+              }}
+            >
+              Recados
+            </button>
             <button type="button" onClick={handleLogout}>
               Sair
             </button>

@@ -1,4 +1,3 @@
-import { CardMaintenance } from "../../Components/CardMaintenance/cardMaintenance";
 import Header from "../../Components/Header/header";
 import { ListMessagesUserPage } from "../../Components/ListMessagesUser/listMessage";
 
@@ -9,7 +8,6 @@ const HomeUser = () => (
       <ListMessagesUserPage />
     </div>
     <div>
-      <CardMaintenance />
     </div>
     {}
   </>

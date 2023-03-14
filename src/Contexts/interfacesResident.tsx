@@ -7,7 +7,7 @@ export interface iResidentContext {
   setMessages: React.Dispatch<React.SetStateAction<iMessages[]>>;
   improvements: iImprovement[] | undefined;
   maintenance: iMaintenance[] | undefined;
-  cashs: iCashs[] | undefined;
+  cashs: iCashs[] | [];
   commentsApi: (id: number) => Promise<void>;
   comments: iComments[] | undefined;
   logout: () => void;
@@ -16,7 +16,8 @@ export interface iResidentContext {
   setComments: React.Dispatch<React.SetStateAction<iComments[]>>;
   messageApi: () => Promise<void>;
   setCashs: React.Dispatch<React.SetStateAction<iCashs[]>>;
-
+  improvementsApi: () => void;
+  setImprovements: React.Dispatch<React.SetStateAction<iImprovement[]>>;
 }
 
 export interface iUser {
@@ -26,7 +27,6 @@ export interface iUser {
   condId: number;
   id: number;
 }
-
 
 export interface iMessages {
   userId: number;
@@ -69,4 +69,20 @@ export interface iComments {
   messageId: number;
   comment: string;
   id: number;
+}
+export interface iCardImprovement {
+  title: string;
+  description: string;
+  id: number;
+  key?: number;
+}
+export interface iCardCash {
+  title: string;
+  price: number;
+
+  id: number;
+}
+export interface iCardResident {
+  name: string;
+  email: string;
 }
