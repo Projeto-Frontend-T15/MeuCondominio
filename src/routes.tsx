@@ -1,15 +1,23 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
-import HomeAdm from "./Pages/pageHomeAdm";
-import HomeUser from "./Pages/pageHomeUser";
-import LandingPage from "./Pages/pageLanding";
-import LoginPage from "./Pages/pageLogin";
+import HomeAdm from "./Pages/PageHome/pageHomeAdm";
+<<<<<<< HEAD
 
-const Router = () => (
+=======
+>>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
+import LandingPage from "./Pages/PageLanding";
+import LoginPage from "./Pages/PageLogin";
+import HomeUser from "./Pages/PageUser";
+import { ProtectedRoutes } from "./Pages/ProtectedRoutes";
+
+export const Router = () => (
   <Routes>
     <Route path="/" element={<LandingPage />} />
     <Route path="/login" element={<LoginPage />} />
-    <Route path="/homeUser" element={<HomeUser />} />
-    <Route path="/homeAdm" element={<HomeAdm />} />
+    <Route path="/homeUser" element={<ProtectedRoutes />}>
+      <Route index element={<HomeUser />} />
+    </Route>
+    <Route path="/homeAdm" element={<ProtectedRoutes />}>
+      <Route index element={<HomeAdm />} />
+    </Route>
   </Routes>
 );
