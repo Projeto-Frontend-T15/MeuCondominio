@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { iMaintenance } from "../../../Contexts/interfacesResident";
 
-export function CardMaintenance() {
+export function CardMaintenance({ name, service, contact}:iMaintenance) {
+
   return (
     <li>
       <h2>Nome</h2>
