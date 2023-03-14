@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { HomeContext } from "../../Contexts/homeContext";
+import { StyledModalCreateCond } from "./styled";
 
 const ModalCreateCond = () => {
   const { register, handleSubmit } = useForm();
@@ -17,7 +18,8 @@ const ModalCreateCond = () => {
   return (
     <>
       {showCreateCond && (
-        <section>
+        <StyledModalCreateCond>
+          <dialog>
           <div>
             <h1>Cadastrar novo Condominio</h1>
             <button onClick={() => setShowCreateCond(false)}>x</button>
@@ -30,7 +32,8 @@ const ModalCreateCond = () => {
             />
             <button type="submit">Cadastrar</button>
           </form>
-        </section>
+          </dialog>
+        </StyledModalCreateCond>
       )}
     </>
   );
