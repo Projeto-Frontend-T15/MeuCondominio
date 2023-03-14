@@ -26,6 +26,7 @@ export const MessagePage = () => {
     <>
       <MessagesStyled>
         <div className="menu--container">
+
           <div className="menu--container__messages">
             <h1>Recados</h1>
             <ListConds />
@@ -43,6 +44,7 @@ export const MessagePage = () => {
 
         {messages && <ReadMessages />}
         {showCreateImp && <RegisterMessages />}
+
         {modal && <ModalComents />}
       </MessagesStyled>
     </>

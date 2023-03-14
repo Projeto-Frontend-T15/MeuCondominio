@@ -90,6 +90,7 @@ export function HomeProvider({ children }: iContextProps) {
     readAllMessages(condID);
   }, [messages]);
 
+
   const readCash = async () => {
     const token = localStorage.getItem("@Token");
 
@@ -100,6 +101,7 @@ export function HomeProvider({ children }: iContextProps) {
         },
       });
       setCashs(response.data);
+
     } catch (error) {
       console.log(error);
     }
@@ -141,6 +143,7 @@ export function HomeProvider({ children }: iContextProps) {
         },
       });
       setMessages(response.data);
+
     } catch (error) {
       console.log(error);
     }
@@ -164,6 +167,7 @@ export function HomeProvider({ children }: iContextProps) {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCondo(response.data);
+
     } catch (error) {
       toast.error("Algo deu errado ao listar condominios cadastrados");
     }
@@ -175,6 +179,7 @@ export function HomeProvider({ children }: iContextProps) {
         headers: { Authorization: `Bearer ${token}` },
       });
       setResidents(response.data);
+
     } catch (error) {
       console.log(error);
     }
@@ -188,9 +193,11 @@ export function HomeProvider({ children }: iContextProps) {
         },
       });
       setMessages(response.data);
+
       toast.success("Recado cadastrado com sucesso");
     } catch (error) {
       toast.error("Algo deu errado!");
+
     }
   };
   const newCond = async (data: ICondos) => {
@@ -230,6 +237,7 @@ export function HomeProvider({ children }: iContextProps) {
         },
       });
       setMaintenance([...maintenance, response.data]);
+
     } catch (error) {
       console.log(error);
     }
@@ -261,6 +269,7 @@ export function HomeProvider({ children }: iContextProps) {
       toast.error("Algo deu errado!");
     }
   };
+
   return (
     <HomeContext.Provider
       value={{

@@ -1,6 +1,8 @@
+
 import { useContext, useState } from "react";
 import { HomeContext } from "../../Contexts/homeContext";
 import { ResidentContext } from "../../Contexts/residentContext";
+
 
 import { StyledHeader } from "./style";
 
@@ -13,6 +15,7 @@ home: boolean;
 }
 
 
+
 const Header = ({ home }:iHeaderHome) => {
   const { logout } = useContext(ResidentContext);
   const { setShowCondo, setShowImprovements, setShowMessages } =
@@ -21,6 +24,7 @@ const Header = ({ home }:iHeaderHome) => {
 interface IHeader {
   buttons: ButtonProps[];
 }
+
 
 
 
@@ -69,6 +73,7 @@ interface IHeader {
             </button>
           </>
         )}
+
 
     </StyledHeader>
   );

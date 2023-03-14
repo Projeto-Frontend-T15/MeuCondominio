@@ -10,14 +10,11 @@ width: 100%;
 justify-content: space-between;
 padding: 1rem;
 background-color: var(--color-1);
-<<<<<<< HEAD
+
 position: fixed;
 top: 0;
 left: 0;
-=======
 
-
->>>>>>> adcd7efe250e25e225663e9ed2d3d39d19f8d1cf
   h1 {
     font-size: var(--font-size-4);
     font-weight: var(--font-weight-4);

@@ -5,11 +5,11 @@ import { ImprovementsStyled } from "./style";
 
 export function ImprovementsPage() {
   return (
-    <ImprovementsStyled>
+    <ImprovementsListStyled>
           <h1>Manutencao</h1>
       <ListConds/>
       <ImprovementsList />
       <CashInfos />
-    </ImprovementsStyled>
+    </ImprovementsListStyled>
   );
 }

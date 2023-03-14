@@ -6,7 +6,6 @@ import { iMessages } from "../../../Contexts/interfacesResident";
 import { StyledFormeMessages } from "./styled";
 import { schema } from "./validations";
 
-
 export interface IRegisterMessages {
   title: string;
   descripiton: string;
@@ -50,7 +49,6 @@ export function RegisterMessages() {
             placeholder="Titulo do Recado"
             {...register("title")}
           />
-
           <input
             type="text"
             placeholder="Descrição do Recado"

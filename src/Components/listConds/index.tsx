@@ -15,6 +15,7 @@ export function ListConds() {
   }, []);
 
   const selectRef = useRef(0);
+
 /*
   const handleSearch = (e) => {
     e.preventDefault();
@@ -26,6 +27,7 @@ export function ListConds() {
     const selectedCondID = Number(selectRef.current.value);
     setCondID(selectedCondID);
     readAllMessages(selectedCondID)
+
     getResidents();
   };
 
