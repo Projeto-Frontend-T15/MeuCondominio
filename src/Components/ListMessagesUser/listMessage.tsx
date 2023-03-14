@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { ResidentContext } from "../../Contexts/residentContext";
-import { MessagePageUser } from "../MessagePageUser";
+import { MessagePageUser } from "../messagePageUser";
 import { UlStyled } from "./style";
 
 export function ListMessagesUserPage() {

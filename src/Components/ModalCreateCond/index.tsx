@@ -8,9 +8,10 @@ const ModalCreateCond = () => {
   const { newCond, setShowCreateCond, showCreateCond } =
     useContext(HomeContext);
 
-  const userId = JSON.parse(localStorage.getItem("@user")).id;
-
-  const submitNewCond = (data) : any => {
+    const user = localStorage.getItem("@user");
+    const userId = user ? Number(JSON.parse(user).id) : 0;
+    
+  const submitNewCond = (data: any)  => {
     const newCondFom = { ...data, userId };
     newCond(newCondFom);
   };

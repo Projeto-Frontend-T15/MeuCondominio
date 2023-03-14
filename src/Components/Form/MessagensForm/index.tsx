@@ -22,8 +22,9 @@ export function RegisterMessages() {
   
 
   const { register, handleSubmit } = useForm<IRegisterMessages>({ resolver: yupResolver(schema) });
-
-  const userId = Number(JSON.parse(localStorage.getItem("@user")).id);
+  const user = localStorage.getItem("@user");
+  const userId = user ? Number(JSON.parse(user).id) : 0; 
+  
 
   const condId = condID;
 

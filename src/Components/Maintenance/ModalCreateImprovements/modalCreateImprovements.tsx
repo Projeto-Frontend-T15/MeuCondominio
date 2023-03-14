@@ -9,7 +9,9 @@ export const ModalCreateImprovement = () => {
   const { register, handleSubmit } = useForm();
   const { newImp, setShowCreateImp, showCreateImp, condID } =
     useContext(HomeContext);
-  const userId = localStorage.getItem("@user").id;
+    const user = localStorage.getItem("@user");
+    const userId = user ? Number(JSON.parse(user).id) : 0; 
+    
   const submitNewImp = (data: any) => {
     const newImpForm: iImprovement = { ...data, userId, condID };
     newImp(newImpForm);

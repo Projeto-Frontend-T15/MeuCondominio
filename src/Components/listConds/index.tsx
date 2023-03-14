@@ -1,4 +1,4 @@
-import { useContext, FormEventHandler, useEffect, useRef } from "react";
+import { useContext, FormEventHandler, useEffect, useRef, RefObject } from "react";
 import { useForm } from "react-hook-form";
 import { HomeContext } from "../../Contexts/homeContext";
 import { StyledForm } from "./styled";
@@ -14,20 +14,12 @@ export function ListConds() {
     getResidents();
   }, []);
 
-  const selectRef = useRef(0);
+  const selectRef = useRef<HTMLSelectElement>(null);
 
-/*
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const selectedCondID = Number(selectRef.current.value);
-    setCondID(selectedCondID);
-    readAllMessages(selectedCondID)
-*/
   const handleSearch = () => {
-    const selectedCondID = Number(selectRef.current.value);
+    const selectedCondID = Number(selectRef.current?.value);
     setCondID(selectedCondID);
-    readAllMessages(selectedCondID)
-
+    readAllMessages(selectedCondID);
     getResidents();
   };
 
