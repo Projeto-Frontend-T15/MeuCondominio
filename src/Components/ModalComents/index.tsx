@@ -7,10 +7,6 @@ export function ModalComents(){
 
     const {comments} = useContext(ResidentContext)
     const {setModal} = useContext(HomeContext)
-
-    
-
-
     return(
         <dialog>
             <div>
