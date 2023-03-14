@@ -14,7 +14,7 @@ const HomeUser = () => {
     { label: "Perfil", onClick: () => console.log("Perfil") },
     { label: "Sair", onClick: () => logout()},
   ];
-  
+
   return (
     <>
       <Header buttons={buttons}/>
