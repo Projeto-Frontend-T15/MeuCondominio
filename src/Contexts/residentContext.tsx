@@ -135,10 +135,7 @@ export function ResidentProvider({ children }: iContextProps) {
         addComments,
         userLogin,
         messageApi,
-
         setImprovements,
-
-
         maintenanceApi,
         modal,
         setModal,

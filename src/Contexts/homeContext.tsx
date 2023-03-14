@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { IRegisterMessages } from "../Components/Form/MessagensForm";
 import api from "../services/api";
 import { iCashs, iImprovement, iMessages } from "./interfacesResident";
 import { ResidentContext } from "./residentContext";
@@ -13,7 +14,7 @@ interface ICondos {
   id: number;
 }
 interface iHomeContext {
-  messagesRegister: (data: iMessages) => Promise<void>;
+  messagesRegister: (data: IRegisterMessages) => Promise<void>;
   deleteMessagens: (id: number) => Promise<void>;
   modal: boolean;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -42,7 +43,8 @@ interface iHomeContext {
   getAllCondos: () => void;
   getResidents: () => void;
   readCash: () => void;
-  readAllMessages: (id: number) => void;
+
+  readAllMessages: (id: Number) => Promise<void>;
   showCreateImp: boolean;
   setShowCreateImp: React.Dispatch<React.SetStateAction<boolean>>;
   newImp: (data: iImprovement) => Promise<void>;
@@ -129,9 +131,9 @@ export function HomeProvider({ children }: iContextProps) {
       console.log(error);
     }
   };
-  const readAllMessages = async (id: Number) => {
+  const readAllMessages = async (id:Number) => {
     const token = localStorage.getItem("@Token");
-
+    
     try {
       const response = await api.get(`/messages?condId=${id}`, {
         headers: {
@@ -177,7 +179,7 @@ export function HomeProvider({ children }: iContextProps) {
       console.log(error);
     }
   };
-  const messagesRegister = async (data: iMessages) => {
+  const messagesRegister = async (data: IRegisterMessages) => {
     const token = localStorage.getItem("@Token");
     try {
       const response = await api.post("/messages", data, {
@@ -259,7 +261,6 @@ export function HomeProvider({ children }: iContextProps) {
       toast.error("Algo deu errado!");
     }
   };
-
   return (
     <HomeContext.Provider
       value={{

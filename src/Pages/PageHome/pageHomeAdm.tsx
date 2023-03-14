@@ -1,6 +1,4 @@
-
 import { useContext } from "react";
-
 import { CondoPage } from "../../Components/Condo/CondoPage";
 import { ImprovementsPage } from "../../Components/Maintenance/MaintenancePage";
 import { MessagePage } from "../../Components/Messages/MessagesPage";
@@ -9,12 +7,11 @@ import { ListConds } from "../../Components/listConds";
 import { ReadMessages } from "../../Components/MessagensAdm";
 import { ModalComents } from "../../Components/ModalComents";
 import ModalCreateCond from "../../Components/ModalCreateCond";
-import { MainStyled } from "./styled";
 import { ResidentContext } from "../../Contexts/residentContext";
+import { MainStyled } from "./styled";
 import Header from "../../Components/Header/header";
 
 const HomeAdm = () => {
-
   const { showCondo, showMessages, showImprovements, setShowCondo, setShowImprovements, setShowMessages } = useContext(HomeContext);
   const { logout } = useContext(ResidentContext);
 

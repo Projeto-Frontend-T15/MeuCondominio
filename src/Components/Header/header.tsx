@@ -25,9 +25,11 @@ interface IHeader {
 
 
 
+
   return (
     <StyledHeader>
       <h1>Meu Condomínio</h1>
+
         {home === false ? (
           <button type="button">Entrar</button>
         ) : (
@@ -67,6 +69,7 @@ interface IHeader {
             </button>
           </>
         )}
+
     </StyledHeader>
   );
 };

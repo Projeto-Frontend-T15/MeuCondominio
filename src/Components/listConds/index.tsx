@@ -4,7 +4,8 @@ import { HomeContext } from "../../Contexts/homeContext";
 import { StyledForm } from "./styled";
 
 export function ListConds() {
-  const { register } = useForm();
+
+  const { register, handleSubmit } = useForm();
   const { condo, condID, setCondID, getAllCondos, getResidents, residents,readAllMessages } =
     useContext(HomeContext);
 
@@ -13,10 +14,15 @@ export function ListConds() {
     getResidents();
   }, []);
 
-  const selectRef = useRef(null);
-
+  const selectRef = useRef(0);
+/*
   const handleSearch = (e) => {
     e.preventDefault();
+    const selectedCondID = Number(selectRef.current.value);
+    setCondID(selectedCondID);
+    readAllMessages(selectedCondID)
+*/
+  const handleSearch = () => {
     const selectedCondID = Number(selectRef.current.value);
     setCondID(selectedCondID);
     readAllMessages(selectedCondID)
@@ -25,7 +31,7 @@ export function ListConds() {
 
   return (
     <StyledForm>
-      <form onSubmit={handleSearch}>
+      <form onSubmit={handleSubmit(handleSearch)}>
         <select title="Condominio" name="select_condID" ref={selectRef}>
           <option>Selecione o condominio</option>
           {condo.map((cond) => (

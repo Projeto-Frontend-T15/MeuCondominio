@@ -5,7 +5,7 @@ export interface iContextProps {
 export interface iResidentContext {
   messages: iMessages[];
   setMessages: React.Dispatch<React.SetStateAction<iMessages[]>>;
-  improvements: iImprovement[] | undefined;
+  improvements: iImprovement[];
   maintenance: iMaintenance[] | undefined;
   cashs: iCashs[] | [];
   commentsApi: (id: number) => Promise<void>;
@@ -16,11 +16,8 @@ export interface iResidentContext {
   setComments: React.Dispatch<React.SetStateAction<iComments[]>>;
   messageApi: () => Promise<void>;
   setCashs: React.Dispatch<React.SetStateAction<iCashs[]>>;
-
   improvementsApi: () => void;
   setImprovements: React.Dispatch<React.SetStateAction<iImprovement[]>>;
-
-
   maintenanceApi: () => Promise<void>;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   modal: boolean;
