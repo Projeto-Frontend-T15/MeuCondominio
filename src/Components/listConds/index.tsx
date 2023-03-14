@@ -3,19 +3,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { HomeContext } from "../../Contexts/homeContext";
 import api from "../../services/api";
 
-interface ICondos {
-    name: string;
-    userId: number;
-    id: number;
-  }
+
 
 
 export function ListConds(){
-    const [condo, setCondo] = useState<ICondos[]>([]);
-
+    
     const { register, handleSubmit } = useForm()
  
-    const { setIdCond } = useContext(HomeContext)
+    const { setIdCond, condo, setCondo } = useContext(HomeContext)
 
     useEffect(() => {
       const condos = async () => {
@@ -27,7 +22,7 @@ export function ListConds(){
         }
       };
       condos();
-    }, [])
+    }, [condo])
 
 
     const newId: SubmitHandler<Id> = (id: Id) => {

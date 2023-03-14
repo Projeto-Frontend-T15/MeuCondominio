@@ -7,6 +7,7 @@ import { ReadMessages } from "../../Components/MessagensAdm";
 import { Messages } from "../../Components/MessagensAdm/messagens";
 
 import { ModalComents } from "../../Components/ModalComents";
+import ModalCreateCond from "../../Components/ModalCreateCond";
 import { HomeContext } from "../../Contexts/homeContext";
 import { ResidentContext } from "../../Contexts/residentContext";
 import { MainStyled } from "./styled";
@@ -27,6 +28,7 @@ const HomeAdm = () => {
           <ReadMessages />
           <ModalComents />
           <RegisterMessages />
+          <ModalCreateCond />
         </div>
       </MainStyled>
     </>
