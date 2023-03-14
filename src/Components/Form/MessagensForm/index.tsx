@@ -19,6 +19,7 @@ interface Message {
 
 export function RegisterMessages() {
   const { messagesRegister, condID, setShowCreateImp } = useContext(HomeContext);
+  console.log(condID)
 
   const { register, handleSubmit } = useForm({ resolver: yupResolver(schema) });
 
@@ -26,7 +27,7 @@ export function RegisterMessages() {
 
   const condId = condID;
 
-  const ids = { ...condId, userId };
+  const ids = { condId, userId };
 
   const submitMessage: SubmitHandler<IRegisterMessages> = (data: Message) => {
     const i = { ...data, ...ids };

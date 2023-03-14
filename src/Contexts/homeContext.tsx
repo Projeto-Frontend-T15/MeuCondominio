@@ -84,6 +84,7 @@ export function HomeProvider({ children }: iContextProps) {
   const [condID, setCondID] = useState(0);
   const [showCreateImp, setShowCreateImp] = useState(false);
 
+  
 
   const readCash = async () => {
     const token = localStorage.getItem("@Token");
@@ -185,7 +186,7 @@ export function HomeProvider({ children }: iContextProps) {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
+      setMessages(response.data);
     } catch (error) {
       console.log(error);
     }
