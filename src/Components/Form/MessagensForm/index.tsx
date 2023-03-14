@@ -6,10 +6,10 @@ import { iMessages } from "../../../Contexts/interfacesResident";
 import { StyledFormeMessages } from "./styled";
 import { schema } from "./validations";
 
-interface IRegisterMessages {
+export interface IRegisterMessages {
   title: string;
   descripiton: string;
-  condId: string;
+  condId: number;
   userId: number;
 }
 interface Message {
@@ -21,15 +21,15 @@ export function RegisterMessages() {
   const { messagesRegister, condID, setShowCreateImp } = useContext(HomeContext);
   
 
-  const { register, handleSubmit } = useForm({ resolver: yupResolver(schema) });
+  const { register, handleSubmit } = useForm<IRegisterMessages>({ resolver: yupResolver(schema) });
 
-  const userId = JSON.parse(localStorage.getItem("@user")).id;
+  const userId = Number(JSON.parse(localStorage.getItem("@user")).id);
 
   const condId = condID;
 
   const ids = { condId, userId };
 
-  const submitMessage: SubmitHandler<IRegisterMessages> = (data: Message) => {
+  const submitMessage: SubmitHandler<IRegisterMessages> = (data: IRegisterMessages) => {
     const i = { ...data, ...ids };
     messagesRegister(i);
     setShowCreateImp(false)

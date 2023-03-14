@@ -1,5 +1,6 @@
 import { iMessages } from "../../Contexts/interfacesResident";
-import { LiStyled } from "./style";
+import { LiStyled } from "./styled";
+
 
 export function MessagePageUser({ title, descripiton }: iMessages) {
   return (

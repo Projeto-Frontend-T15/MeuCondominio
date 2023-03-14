@@ -5,7 +5,7 @@ export interface iContextProps {
 export interface iResidentContext {
   messages: iMessages[];
   setMessages: React.Dispatch<React.SetStateAction<iMessages[]>>;
-  improvements: iImprovement[] | undefined;
+  improvements: iImprovement[];
   maintenance: iMaintenance[] | undefined;
   cashs: iCashs[] | [];
   commentsApi: (id: number) => Promise<void>;
