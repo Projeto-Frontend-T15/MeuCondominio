@@ -42,6 +42,10 @@ interface iHomeContext {
   getAllCondos: () => void;
   getResidents: () => void;
   readCash: () => void;
+  readAllMessages: () => void;
+  showCreateImp: boolean;
+  setShowCreateImp: React.Dispatch<React.SetStateAction<boolean>>;
+  newImp: (data: iImprovement) => Promise<void>;
 }
 interface Id {
   condId: string;
@@ -78,8 +82,9 @@ export function HomeProvider({ children }: iContextProps) {
   const [modalNewCond, setModalNewCond] = useState(false);
   const [showCreateCond, setShowCreateCond] = useState(false);
   const [condID, setCondID] = useState(0);
+  const [showCreateImp, setShowCreateImp] = useState(false);
 
-  
+
   const readCash = async () => {
     const token = localStorage.getItem("@Token");
 
@@ -118,6 +123,21 @@ export function HomeProvider({ children }: iContextProps) {
         },
       });
       setComments(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const readAllMessages = async () => {
+    const token = localStorage.getItem("@Token");
+
+    try {
+      const response = await api.get(`/messages`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setMessages(response.data);
+      console.log(messages);
     } catch (error) {
       console.log(error);
     }
@@ -185,6 +205,20 @@ export function HomeProvider({ children }: iContextProps) {
       toast.error("Algo deu errado!");
     }
   };
+  const newImp = async (data: iImprovement ) => {
+    const token = localStorage.getItem("@Token");
+    try {
+      const response = await api.post(`/messages/${condID}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success("Nova melhoria cadastrada com sucesso");
+      setCondo([...condo, response.data]);
+    } catch (error) {
+      toast.error("Algo deu errado!");
+    }
+  }
   const postImprovements = async (data: iImprovement) => {
     const token = localStorage.getItem("@Token");
     try {
@@ -233,11 +267,13 @@ export function HomeProvider({ children }: iContextProps) {
         messagesRegister,
         deleteMessagens,
         modal,
+        showCreateImp, setShowCreateImp,
         setModal,
         readAllComents,
         idCond,
         setIdCond,
         cashs,
+        newImp,
         residents,
         showCreateCond,
         setShowCreateCond,
@@ -259,6 +295,7 @@ export function HomeProvider({ children }: iContextProps) {
         setCondID,
         getResidents,
         readCash,
+        readAllMessages,
       }}
     >
       {children}

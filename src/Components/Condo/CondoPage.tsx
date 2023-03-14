@@ -27,8 +27,6 @@ export const CondoPage = () => {
     formState: { errors },
   } = useForm();
 
-
-
   useEffect(() => {
     getAllCondos();
     console.log(condo);
@@ -37,23 +35,34 @@ export const CondoPage = () => {
   return (
     <>
       <CondoStyled>
-        <ListConds />
-        <button type="submit" onClick={() => setShowCreateCond(true)}>
-          {" "}
-          Criar condominio
-        </button>
-        <h2>Residentes</h2>
-        {residents && residents.map((resident) => {
-          console.log(resident);
-          return (
-            <CardResident
-              name={resident.name}
-              email={resident.email}
-              key={resident.id}
-            />
-          );
-        })}
-       
+        <div className="div_main">
+          <h1>Condominio</h1>
+          <div className="container_header">
+            <ListConds />
+            <button
+              className="btn_openModal"
+              type="submit"
+              onClick={() => setShowCreateCond(true)}
+            >
+              Criar condominio
+            </button>
+          </div>
+
+          <h2>Residentes</h2>
+          <ul>
+            {residents &&
+              residents.map((resident) => {
+                console.log(resident);
+                return (
+                  <CardResident
+                    name={resident.name}
+                    email={resident.email}
+                    key={resident.id}
+                  />
+                );
+              })}
+          </ul>
+        </div>
       </CondoStyled>
       <ModalCreateCond />
     </>

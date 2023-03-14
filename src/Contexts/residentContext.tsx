@@ -43,6 +43,7 @@ export function ResidentProvider({ children }: iContextProps) {
       );
 
       setMessages(response.data);
+      console.log(messages)
     } catch (error) {
       console.log(error);
     }

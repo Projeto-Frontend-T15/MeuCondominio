@@ -4,7 +4,7 @@ export const MainStyled = styled.main`
 display: flex;
 flex-direction: column;
 margin: 5%;
-width: 100%;
+width: 90%;
 height: 90%;
 form{
     display: flex;
@@ -20,4 +20,5 @@ input{
     width: 200px;
 
 }
+
 `
