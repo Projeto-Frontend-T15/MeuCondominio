@@ -1,25 +1,34 @@
+<<<<<<< HEAD
 import { useContext, useState } from "react";
 import { HomeContext } from "../../Contexts/homeContext";
 import { ResidentContext } from "../../Contexts/residentContext";
+=======
+>>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
 import { StyledHeader } from "./style";
 
-interface IHeader {
-  home: boolean;
+interface ButtonProps {
+  label: string;
+  onClick: () => void;
 }
 
+<<<<<<< HEAD
 const Header = ({ home }: IHeader) => {
   const { logout } = useContext(ResidentContext);
   const { setShowCondo, setShowImprovements, setShowMessages } =
     useContext(HomeContext);
+=======
+interface IHeader {
+  buttons: ButtonProps[];
+}
+>>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
 
-  const handleLogout = () => {
-    logout();
-  };
+const Header: React.FC<IHeader> = ({ buttons }) => {
 
   return (
     <StyledHeader>
       <h1>Meu Condomínio</h1>
       <div className="buttons">
+<<<<<<< HEAD
         {home === false ? (
           <button type="button">Entrar</button>
         ) : (
@@ -59,6 +68,13 @@ const Header = ({ home }: IHeader) => {
             </button>
           </>
         )}
+=======
+        {buttons.map((button) => (
+          <button key={button.label} onClick={button.onClick}>
+            {button.label}
+          </button>
+        ))}
+>>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
       </div>
     </StyledHeader>
   );

@@ -6,6 +6,7 @@ flex-direction: column;
 margin: 5%;
 width: 90%;
 height: 90%;
+margin-top: 73px;
 form{
     display: flex;
     flex-direction: column;

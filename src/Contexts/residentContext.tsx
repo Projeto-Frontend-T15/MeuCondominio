@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import api from "../services/api";
 import { HomeContext } from "./homeContext";
 import {
@@ -24,6 +26,11 @@ export function ResidentProvider({ children }: iContextProps) {
   const [comments, setComments] = useState<iComments[]>([]);
   const [modalMessage, setModalMessage] = useState(false);
   const [readMessage, setReadMessage] = useState<iMessages>();
+<<<<<<< HEAD
+=======
+  const [modal, setModal] = useState(false);
+
+>>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
   const userLoginLocal = localStorage.getItem("@user");
   const [userLogin, setUserLogin] = useState<iUser>(
     userLoginLocal ? JSON.parse(userLoginLocal) : []
@@ -32,6 +39,7 @@ export function ResidentProvider({ children }: iContextProps) {
   const { condID } = useContext(HomeContext);
 
   const navegate = useNavigate();
+  console.log(maintenance)
 
   const messageApi = async () => {
     const idCond = userLogin.condId;
@@ -45,21 +53,25 @@ export function ResidentProvider({ children }: iContextProps) {
       setMessages(response.data);
       console.log(messages)
     } catch (error) {
-      console.log(error);
+      toast.error("Algo deu errado ao listar recados");
     }
   };
 
+
   const maintenanceApi = async () => {
     const idCond = userLogin.condId;
+    const token = localStorage.getItem("@Token");
     try {
       const response = await api.get<iMaintenance[]>(
-        `/maintenance?condId=${idCond}`
+        `/maintenance?condId=${idCond}`,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       setMaintenance(response.data);
     } catch (error) {
-      console.log(error);
+      toast.error("Algo deu errado ao listar prestadores de serviço");
     }
   };
+
 
   const improvementsApi = async () => {
     const token = localStorage.getItem("@Token");
@@ -129,7 +141,13 @@ export function ResidentProvider({ children }: iContextProps) {
         addComments,
         userLogin,
         messageApi,
+<<<<<<< HEAD
         setImprovements,
+=======
+        maintenanceApi,
+        modal,
+        setModal,
+>>>>>>> 66dd6becd61c01f43411d4bdfd73ec316a62141a
       }}
     >
       {children}

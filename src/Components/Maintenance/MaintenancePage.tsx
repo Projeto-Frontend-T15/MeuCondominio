@@ -1,7 +1,7 @@
 import { ListConds } from "../listConds";
 import { CashInfos } from "./Cash/cashInfos";
 import { ImprovementsList } from "./Improvements/improvements";
-import { ImprovementsStyled } from "./styled";
+import { ImprovementsListStyled } from "./Improvements/styled";
 
 export function ImprovementsPage() {
   return (
