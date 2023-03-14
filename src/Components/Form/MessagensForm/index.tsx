@@ -54,10 +54,10 @@ export function RegisterMessages() {
             placeholder="Descrição do Recado"
             {...register("descripiton")}
           />
-
           <button type="submit">Registrar Recado</button>
         </form>
       </dialog>
     </StyledFormeMessages>
   );
 }
+
