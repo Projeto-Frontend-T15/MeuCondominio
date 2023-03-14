@@ -5,13 +5,15 @@ import { ListMessagesUserPage } from "../../Components/ListMessagesUser/listMess
 const HomeUser = () => (
   <>
     <Header home={true} />
-    <div>
-      <ListMessagesUserPage />
-    </div>
-    <div>
-      <CardMaintenance />
-    </div>
-    {}
+    <main>
+      <section>
+        <h2>Quadro de recados</h2>
+        <ListMessagesUserPage />
+      </section>
+      <aside>
+        <CardMaintenance />
+      </aside>
+    </main>
   </>
 );
 
