@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { RegisterMessages } from "../../Components/Form/MessagensForm";
 import Header from "../../Components/Header/header";
 import { ListConds } from "../../Components/listConds";
-import { ReadMessagens } from "../../Components/MessagensAdm";
+import { ReadMessages } from "../../Components/MessagensAdm";
+import { Messages } from "../../Components/MessagensAdm/messagens";
 
 import { ModalComents } from "../../Components/ModalComents";
-import ModalCreateCond from "../../Components/ModalCreateCond";
 import { HomeContext } from "../../Contexts/homeContext";
 import { ResidentContext } from "../../Contexts/residentContext";
 import { MainStyled } from "./styled";
@@ -24,10 +24,9 @@ const HomeAdm = () => {
       <MainStyled>
         <div className="container_components">
           <ListConds />
-          {messages ? <ReadMessagens /> : <p>Ainda não existe recados</p>}
-          {modal && <ModalComents />}
+          <ReadMessages />
+          <ModalComents />
           <RegisterMessages />
-          <ModalCreateCond />
         </div>
       </MainStyled>
     </>

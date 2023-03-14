@@ -15,17 +15,17 @@ const Header = ({ home }: IHeader) => {
 
   return (
     <StyledHeader>
-      <h1>Meu Condominio</h1>
+      <h1>Meu Condomínio</h1>
       <div className="buttons">
         {home === false ? (
           <button type="button">Entrar</button>
         ) : (
           <>
-            <button type="button">Condominio</button>
-            <button type="button">Manutencao</button>
+            <button type="button">Condomínio</button>
+            <button type="button">Manutenção</button>
             <button type="button">Recados</button>
             <button type="button" onClick={handleLogout}>
-              Logout
+              Sair
             </button>
           </>
         )}

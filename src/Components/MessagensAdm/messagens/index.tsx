@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { HomeContext } from "../../../Contexts/homeContext";
 import { iMessages } from "../../../Contexts/interfacesResident"
+import { StyledLiMessages } from "./styled";
 
 interface IMessagesProps{
     mess: iMessages;
@@ -12,12 +13,13 @@ export function Messages({mess}: IMessagesProps){
     const { deleteMessagens, setModal, readAllComents} = useContext(HomeContext)
 
     const renderCommentOfMenssages = () => {
+        console.log(mess.id)
         setModal(true)
         readAllComents(mess.id)
     }
 
     return(
-        <li>
+        <StyledLiMessages>
             <h1>{mess.title}</h1>
             <span>{mess.descripiton}</span>
             <div>
@@ -25,6 +27,6 @@ export function Messages({mess}: IMessagesProps){
                 
                 <button onClick={() => {renderCommentOfMenssages()}} >Comentários</button>
             </div>
-        </li>
+        </StyledLiMessages>
     )
 }

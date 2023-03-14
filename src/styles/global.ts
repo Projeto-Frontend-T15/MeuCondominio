@@ -15,10 +15,14 @@ export const GlobalStyles = createGlobalStyle`
             --color-3: #B7E1A1;
             --color-4: #FDF5A4;
             --color-5: #9bc983;
+            --color-6: #D9D9D9;
+            --color-7: #EFEFEF;
+            --color-8: rgba(0, 0, 0, 0.5);
             --color-black: #0D0C0C;
             --color-white: #EFEFEF;
             --white: #FFFFFF;
             --black: #000000;
+
 
             --font-size-1: 1rem; /* 16px */ 
             --font-size-2: 1.25rem; /* 20px */

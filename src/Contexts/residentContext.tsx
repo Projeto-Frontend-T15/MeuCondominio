@@ -115,6 +115,7 @@ export function ResidentProvider({ children }: iContextProps) {
         improvements,
         maintenance,
         cashs,
+        setCashs,
         commentsApi,
         comments,
         setComments,

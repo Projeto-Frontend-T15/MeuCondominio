@@ -25,10 +25,12 @@ export const HeaderStyled = styled.header`
     color: var(--color-white);
     background-color: var(--color-2);
     border-radius: var(--radius-1);
+    transition: transform 0.2s ease-in-out;
   }
 
   a:hover {
     color: var(--white);
+    transform: scale(1.1);
   }
 
   @media (min-width: 769px) {
@@ -40,7 +42,7 @@ export const HeaderStyled = styled.header`
 
 export const MainStyled = styled.main`
   padding: 30px;
-  margin-top: 208px;
+  margin-top: 200px;
   
   section {
     display: flex;
