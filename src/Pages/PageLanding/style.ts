@@ -26,10 +26,12 @@ export const HeaderStyled = styled.header`
     color: var(--color-white);
     background-color: var(--color-2);
     border-radius: var(--radius-1);
+    transition: transform 0.2s ease-in-out;
   }
 
   a:hover {
     color: var(--white);
+    transform: scale(1.1);
   }
 
   @media (min-width: 769px) {
@@ -50,8 +52,10 @@ export const MainStyled = styled.main`
   background-position: bottom;
 
   div{
-    width: 30%;
-    
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
 
     h3{
         font-size: var(--font-size-1);
@@ -61,6 +65,10 @@ export const MainStyled = styled.main`
         border-radius: var(--radius-2);
         padding: 63px 40px;
         text-align: center;
+    }
+
+    @media (min-width: 769px) {
+      width: 30%;    
     }
   }
 
