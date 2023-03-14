@@ -1,10 +1,14 @@
-import { CardMaintenance } from "../CardMaintenance/maintenance";
-import { MaintenanceStyled } from "./styled";
+import { ListConds } from "../listConds";
+import { CashInfos } from "./Cash/cashInfos";
+import { ImprovementsList } from "./Improvements/improvements";
+import { ImprovementsStyled } from "./styled";
 
-export function MaintenancePage() {
+export function ImprovementsPage() {
   return (
-    <MaintenanceStyled>
-      <CardMaintenance />
-    </MaintenanceStyled>
+    <ImprovementsStyled>
+      <ListConds/>
+      <ImprovementsList />
+      <CashInfos />
+    </ImprovementsStyled>
   );
 }

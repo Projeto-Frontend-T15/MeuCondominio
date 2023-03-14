@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import { HomeContext } from "../../../../Contexts/homeContext";
 import api from "../../../../services/api";
 import { FielsetStyled } from "./style";
 
@@ -17,20 +18,8 @@ interface ICondos {
 }
 
 export function SelectCondo({ register, error }: ISelectCondo) {
-  const [condo, setCondo] = useState<ICondos[]>([]);
-  
-  
-  useEffect(() => {
-    const condos = async () => {
-      try {
-        const response = await api.get("/conds");
-        setCondo(response.data);
-      } catch (error) {
-        toast.error("Algo deu errado ao listar condominios cadastrados");
-      }
-    };
-    condos();
-  }, [])
+  const { showCondo, getAllCondos, condo, getResidents} = useContext(HomeContext);
+
 
 
   return (
