@@ -173,7 +173,7 @@ export function HomeProvider({ children }: iContextProps) {
     }
   };
 
-  }
+  
   // const cachsCond = async () => {
   //   const token = localStorage.getItem("@Token")
   //   try {

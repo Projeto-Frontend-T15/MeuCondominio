@@ -5,19 +5,21 @@ import { Maintenance } from "../../Components/Maintenance";
 import { Trustee } from "../../Components/Trustee";
 import { useContext } from "react";
 import { ResidentContext } from "../../Contexts/residentContext";
+import { ModalProfile } from "../../Components/ModalProfile";
 
 const HomeUser = () => {
-  const { logout } = useContext(ResidentContext);
+  const { logout, setModal, modal } = useContext(ResidentContext);
 
   const buttons = [
     { label: "Histórico Condomínio", onClick: () => console.log("Histórico Condomínio") },
-    { label: "Perfil", onClick: () => console.log("Perfil") },
+    { label: "Perfil", onClick: () => setModal(true)},
     { label: "Sair", onClick: () => logout()},
   ];
 
   return (
     <>
       <Header buttons={buttons}/>
+      {modal && <ModalProfile/>}
       <MainStyled>
         <SectionStyled>
           <ListMessagesUserPage />
