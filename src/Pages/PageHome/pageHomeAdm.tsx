@@ -1,6 +1,6 @@
 import { CondoPage } from "../../Components/Condo/CondoPage";
 import Header from "../../Components/Header/header";
-import { MaintenancePage } from "../../Components/Maintenance/MaintenancePage";
+import { ImprovementsPage } from "../../Components/Maintenance/MaintenancePage";
 import { MessagePage } from "../../Components/Messages/MessagesPage";
 import { ListConds } from "../../Components/listConds";
 import { ReadMessages } from "../../Components/MessagensAdm";
@@ -17,11 +17,10 @@ const HomeAdm = () => {
       <Header home={true} />
       <MainStyled>
         <div className="container_components">
-          <ListConds />
-          {messages ? <ReadMessages /> : <p>Ainda não existe recados</p>}
-          {modal && <ModalComents />}
-          <RegisterMessages />
-          <ModalCreateCond />
+          <CondoPage />
+          <MessagePage />
+          <ImprovementsPage />
+
         </div>
       </MainStyled>
     </>
