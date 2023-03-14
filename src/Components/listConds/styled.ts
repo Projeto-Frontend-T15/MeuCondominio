@@ -5,8 +5,8 @@ export const StyledForm = styled.div`
   border: none;
   border-radius: 6px;
   width: 50%;
-  .select{
-    width: 50%;
+  select{
+    width: 200px;
     margin-left: 3%;
     border-radius: 6px;
     border: 1px solid var(--color-6);
@@ -18,6 +18,8 @@ export const StyledForm = styled.div`
   button{
     padding: 1rem;
     width: auto;
+    font-weight: var(--font-weight-5);
+    background-color: var(--color-5);
   }
   
 `;

@@ -13,7 +13,6 @@ export const CondoStyled = styled.section`
   }
   button {
     margin-top: 1rem;
-    width: 20%;
     padding: 0.5rem;
     background-color: var(--color-3);
     border-radius: var(--radius-1);
@@ -31,9 +30,7 @@ export const CondoStyled = styled.section`
   }
   .btn_openModal {
  
-    width: 20%;
-    padding: 2%;
-    background-color: var(--color-6);
+    background-color: var(--color-8);
     border-radius: var(--radius-1);
     font-size: var(--font-size-1);
     font-weight: var(--font-weight-3);
@@ -59,6 +56,7 @@ export const CondoStyled = styled.section`
     border: 1px solid var(--color-8);
     border-radius: 6px;
     background-color: var(--color-7);
+    gap: 20px;
   }
   .container_header{
     display: flex;

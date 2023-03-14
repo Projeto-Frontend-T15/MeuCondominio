@@ -95,7 +95,7 @@ export function HomeProvider({ children }: iContextProps) {
         },
       });
       setCashs(response.data);
-      console.log(cashs);
+      
     } catch (error) {
       console.log(error);
     }
@@ -127,17 +127,17 @@ export function HomeProvider({ children }: iContextProps) {
       console.log(error);
     }
   };
-  const readAllMessages = async () => {
+  const readAllMessages = async (id:Number) => {
     const token = localStorage.getItem("@Token");
-
+    
     try {
-      const response = await api.get(`/messages`, {
+      const response = await api.get(`/messages?condId=${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setMessages(response.data);
-      console.log(messages);
+     
     } catch (error) {
       console.log(error);
     }
@@ -160,20 +160,19 @@ export function HomeProvider({ children }: iContextProps) {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCondo(response.data);
-      console.log(condo);
+     
     } catch (error) {
       toast.error("Algo deu errado ao listar condominios cadastrados");
     }
   };
   const getResidents = async () => {
     const token = localStorage.getItem("@Token");
-    console.log(condID);
     try {
       const response = await api.get(`/users?condId=${condID}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setResidents(response.data);
-      console.log(residents);
+      
     } catch (error) {
       console.log(error);
     }
@@ -228,7 +227,7 @@ export function HomeProvider({ children }: iContextProps) {
         },
       });
       setMaintenance([...maintenance, response.data]);
-      console.log(response.data);
+      
     } catch (error) {
       console.log(error);
     }

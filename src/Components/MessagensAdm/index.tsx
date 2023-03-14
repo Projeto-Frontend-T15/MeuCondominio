@@ -4,8 +4,7 @@ import { Messages } from "./messagens";
 import { StyledDivMessagens, StyledUl } from "./styled";
 
 export function ReadMessages() {
-  const { messages, comments } = useContext(ResidentContext);
-
+  const { messages, comments} = useContext(ResidentContext);
   return (
     <StyledDivMessagens>
       <h3>Quadro de Recados</h3>

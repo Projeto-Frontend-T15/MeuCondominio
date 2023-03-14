@@ -10,9 +10,7 @@ width: 100%;
 justify-content: space-between;
 padding: 1rem;
 background-color: var(--color-1);
-position: fixed;
-top: 0;
-left: 0;
+
 
   h1 {
     font-size: var(--font-size-4);
