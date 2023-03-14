@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import { HomeContext } from "../../../Contexts/homeContext";
 import { CardCash } from "./CardCash/cardCash";
-import { CashStyled } from "./styles";
 
 export const CashInfos = () => {
   const { cashs, readCash } = useContext(HomeContext);
@@ -13,7 +12,7 @@ export const CashInfos = () => {
   return (
     <>
       {cashs.length > 0 ? (
-        <CashStyled>
+        <ul>
           {cashs.map((cash) => (
             <CardCash
               title={cash.title}
@@ -22,7 +21,7 @@ export const CashInfos = () => {
               key={cash.id}
             />
           ))}
-        </CashStyled>
+        </ul>
       ) : (
         <p>Sem entradas</p>
       )}

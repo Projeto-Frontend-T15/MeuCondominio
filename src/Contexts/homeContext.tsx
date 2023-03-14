@@ -42,7 +42,7 @@ interface iHomeContext {
   getAllCondos: () => void;
   getResidents: () => void;
   readCash: () => void;
-  readAllMessages: () => void;
+  readAllMessages:(id:number) => void;
   showCreateImp: boolean;
   setShowCreateImp: React.Dispatch<React.SetStateAction<boolean>>;
   newImp: (data: iImprovement) => Promise<void>;
@@ -84,6 +84,10 @@ export function HomeProvider({ children }: iContextProps) {
   const [condID, setCondID] = useState(0);
   const [showCreateImp, setShowCreateImp] = useState(false);
 
+  useEffect(() => {
+    readAllMessages(condID);
+  }, [messages]);
+  
 
   const readCash = async () => {
     const token = localStorage.getItem("@Token");
@@ -95,7 +99,7 @@ export function HomeProvider({ children }: iContextProps) {
         },
       });
       setCashs(response.data);
-      console.log(cashs);
+      
     } catch (error) {
       console.log(error);
     }
@@ -127,17 +131,17 @@ export function HomeProvider({ children }: iContextProps) {
       console.log(error);
     }
   };
-  const readAllMessages = async () => {
+  const readAllMessages = async (id:Number) => {
     const token = localStorage.getItem("@Token");
-
+    
     try {
-      const response = await api.get(`/messages`, {
+      const response = await api.get(`/messages?condId=${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setMessages(response.data);
-      console.log(messages);
+     
     } catch (error) {
       console.log(error);
     }
@@ -160,20 +164,19 @@ export function HomeProvider({ children }: iContextProps) {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCondo(response.data);
-      console.log(condo);
+     
     } catch (error) {
       toast.error("Algo deu errado ao listar condominios cadastrados");
     }
   };
   const getResidents = async () => {
     const token = localStorage.getItem("@Token");
-    console.log(condID);
     try {
       const response = await api.get(`/users?condId=${condID}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setResidents(response.data);
-      console.log(residents);
+      
     } catch (error) {
       console.log(error);
     }
@@ -186,9 +189,10 @@ export function HomeProvider({ children }: iContextProps) {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
+      setMessages(response.data);
+      toast.success("Recado cadastrado com sucesso")
     } catch (error) {
-      console.log(error);
+      toast.error("Algo deu errado!")
     }
   };
   const newCond = async (data: ICondos) => {
@@ -228,7 +232,7 @@ export function HomeProvider({ children }: iContextProps) {
         },
       });
       setMaintenance([...maintenance, response.data]);
-      console.log(response.data);
+      
     } catch (error) {
       console.log(error);
     }
@@ -260,7 +264,6 @@ export function HomeProvider({ children }: iContextProps) {
       toast.error("Algo deu errado!");
     }
   };
-
 
   const readAllMenssagens = async (id: Id) => {
     const token = localStorage.getItem("@Token");

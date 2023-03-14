@@ -5,29 +5,29 @@ import { StyledForm } from "./styled";
 
 export function ListConds() {
   const { register } = useForm();
-  const { condo, setCondID, getAllCondos, getResidents, residents } =
+  const { condo, condID, setCondID, getAllCondos, getResidents, residents,readAllMessages } =
     useContext(HomeContext);
 
   useEffect(() => {
     getAllCondos();
     getResidents();
-    console.log(residents);
   }, []);
 
   const selectRef = useRef(null);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const selectedCondID = selectRef.current.value;
-    setCondID(Number(selectedCondID));
+    const selectedCondID = Number(selectRef.current.value);
+    setCondID(selectedCondID);
+    readAllMessages(selectedCondID)
     getResidents();
   };
 
   return (
     <StyledForm>
       <form onSubmit={handleSearch}>
-        <label htmlFor="form"> Selecione o condominio</label>
         <select title="Condominio" name="select_condID" ref={selectRef}>
+          <option>Selecione o condominio</option>
           {condo.map((cond) => (
             <option key={cond.id} value={cond.id}>
               {cond.name}

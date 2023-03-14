@@ -7,6 +7,7 @@ export const LiStyled = styled.li`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 20px;
 
   h3 {
     font-size: var(--font-size-2);

@@ -26,7 +26,6 @@ export function ResidentProvider({ children }: iContextProps) {
   const [comments, setComments] = useState<iComments[]>([]);
   const [modalMessage, setModalMessage] = useState(false);
   const [readMessage, setReadMessage] = useState<iMessages>();
-
   const [modal, setModal] = useState(false);
 
   const userLoginLocal = localStorage.getItem("@user");
@@ -37,7 +36,6 @@ export function ResidentProvider({ children }: iContextProps) {
   const { condID } = useContext(HomeContext);
 
   const navegate = useNavigate();
-  console.log(maintenance)
 
   const messageApi = async () => {
     const idCond = userLogin.condId;
@@ -47,9 +45,7 @@ export function ResidentProvider({ children }: iContextProps) {
         `/messages?condId=${idCond}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
       setMessages(response.data);
-      console.log(messages)
     } catch (error) {
       toast.error("Algo deu errado ao listar recados");
     }
@@ -141,6 +137,7 @@ export function ResidentProvider({ children }: iContextProps) {
         messageApi,
 
         setImprovements,
+
 
         maintenanceApi,
         modal,

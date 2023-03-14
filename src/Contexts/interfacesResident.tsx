@@ -20,6 +20,7 @@ export interface iResidentContext {
   improvementsApi: () => void;
   setImprovements: React.Dispatch<React.SetStateAction<iImprovement[]>>;
 
+
   maintenanceApi: () => Promise<void>;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   modal: boolean;
@@ -39,7 +40,6 @@ export interface iMessages {
   title: string;
   descripiton: string;
   id: number;
-  condID?:number;
 }
 export interface iMaintenance {
   userId: number;
