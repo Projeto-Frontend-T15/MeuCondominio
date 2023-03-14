@@ -18,7 +18,7 @@ const HomeUser = () => {
 
   return (
     <>
-      <Header buttons={buttons}/>
+      <Header home={true}/>
       {modal && <ModalProfile/>}
       <MainStyled>
         <SectionStyled>

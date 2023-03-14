@@ -38,7 +38,7 @@ const HomeAdm = () => {
   ];
   return (
     <>
-      <Header buttons={buttons} />
+      <Header home={true} />
       <MainStyled>
         <div className="container_components">
           {showCondo && <CondoPage />}

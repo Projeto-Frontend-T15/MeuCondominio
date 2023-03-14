@@ -1,30 +1,72 @@
+import { useContext, useState } from "react";
+import { HomeContext } from "../../Contexts/homeContext";
+import { ResidentContext } from "../../Contexts/residentContext";
+
 import { StyledHeader } from "./style";
 
 interface ButtonProps {
   label: string;
   onClick: () => void;
 }
+interface iHeaderHome {
+home: boolean;
+}
 
 
+const Header = ({ home }:iHeaderHome) => {
+  const { logout } = useContext(ResidentContext);
+  const { setShowCondo, setShowImprovements, setShowMessages } =
+    useContext(HomeContext);
 
 interface IHeader {
   buttons: ButtonProps[];
 }
 
 
-const Header: React.FC<IHeader> = ({ buttons }) => {
+
 
   return (
     <StyledHeader>
       <h1>Meu Condomínio</h1>
-      <div className="buttons">
-
-        {buttons.map((button) => (
-          <button key={button.label} onClick={button.onClick}>
-            {button.label}
-          </button>
-        ))}
-      </div>
+        {home === false ? (
+          <button type="button">Entrar</button>
+        ) : (
+          <>
+            <button
+              type="button"
+              onClick={() => {
+                setShowMessages(false);
+                setShowImprovements(false);
+                setShowCondo(true);
+              }}
+            >
+              Condomínio
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setShowMessages(false);
+                setShowImprovements(true);
+                setShowCondo(false);
+              }}
+            >
+              Manutenção
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setShowMessages(true);
+                setShowImprovements(false);
+                setShowCondo(false);
+              }}
+            >
+              Recados
+            </button>
+            <button type="button" onClick={logout}>
+              Sair
+            </button>
+          </>
+        )}
     </StyledHeader>
   );
 };

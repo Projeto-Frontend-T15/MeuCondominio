@@ -10,7 +10,7 @@ const ModalCreateCond = () => {
 
   const userId = JSON.parse(localStorage.getItem("@user")).id;
 
-  const submitNewCond = (data) => {
+  const submitNewCond = (data) : any => {
     const newCondFom = { ...data, userId };
     newCond(newCondFom);
   };
