@@ -266,6 +266,43 @@ export function HomeProvider({ children }: iContextProps) {
   };
 
 
+
+  const readAllMenssagens = async (id: Id) => {
+    const token = localStorage.getItem("@Token");
+
+    try {
+      const response = await api.get(`/messages?condId=${id.condId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setMessages(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
+
+  const readAllImprovements= async (id: number) => {
+    const token = localStorage.getItem("@Token");
+    try {
+      const response = await api.get(`/improvements?condId=${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setMaintenance(response.data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
+
+
   return (
     <HomeContext.Provider
       value={{

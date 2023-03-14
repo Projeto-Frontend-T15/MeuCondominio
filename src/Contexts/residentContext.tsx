@@ -26,6 +26,7 @@ export function ResidentProvider({ children }: iContextProps) {
   const [comments, setComments] = useState<iComments[]>([]);
   const [modalMessage, setModalMessage] = useState(false);
   const [readMessage, setReadMessage] = useState<iMessages>();
+
   const [modal, setModal] = useState(false);
 
   const userLoginLocal = localStorage.getItem("@user");
@@ -135,7 +136,9 @@ export function ResidentProvider({ children }: iContextProps) {
         addComments,
         userLogin,
         messageApi,
+
         setImprovements,
+
         maintenanceApi,
         modal,
         setModal,

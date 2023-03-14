@@ -16,8 +16,11 @@ export interface iResidentContext {
   setComments: React.Dispatch<React.SetStateAction<iComments[]>>;
   messageApi: () => Promise<void>;
   setCashs: React.Dispatch<React.SetStateAction<iCashs[]>>;
+
   improvementsApi: () => void;
   setImprovements: React.Dispatch<React.SetStateAction<iImprovement[]>>;
+
+
   maintenanceApi: () => Promise<void>;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   modal: boolean;
