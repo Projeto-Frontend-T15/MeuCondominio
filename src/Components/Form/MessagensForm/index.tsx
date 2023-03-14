@@ -18,19 +18,20 @@ interface Message {
 }
 
 export function RegisterMessages() {
-  const { messagesRegister, conID, setShowCreateImp } = useContext(HomeContext);
+  const { messagesRegister, condID, setShowCreateImp } = useContext(HomeContext);
 
   const { register, handleSubmit } = useForm({ resolver: yupResolver(schema) });
 
   const userId = JSON.parse(localStorage.getItem("@user")).id;
 
-  const condId = conID;
+  const condId = condID;
 
   const ids = { ...condId, userId };
 
   const submitMessage: SubmitHandler<IRegisterMessages> = (data: Message) => {
     const i = { ...data, ...ids };
     messagesRegister(i);
+    setShowCreateImp(false)
   };
 
   return (
@@ -54,6 +55,7 @@ export function RegisterMessages() {
             placeholder="Descrição do Recado"
             {...register("descripiton")}
           />
+
           <button type="submit">Registrar Recado</button>
         </form>
       </dialog>
