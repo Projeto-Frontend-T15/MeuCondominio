@@ -22,7 +22,7 @@ export const StyledLiMessages = styled.li`
   div {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 20px;
     button {
       font-weight: var(--font-weight-1);

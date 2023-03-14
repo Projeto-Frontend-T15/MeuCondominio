@@ -6,6 +6,7 @@ export const StyledDivMessagens = styled.div`
   align-items: flex-start;
   gap: 10px;
   padding: 10px 10px;
+  width: 90vw;
   h3 {
     font-weight: 800;
     font-size: var(--font-size-4);

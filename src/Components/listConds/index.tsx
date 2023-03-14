@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { HomeContext } from "../../Contexts/homeContext";
 import api from "../../services/api";
+import { FielsetStyled } from "./styled";
 
 
 
@@ -30,7 +31,7 @@ export function ListConds(){
     }
 
     return(
-      <form onSubmit={handleSubmit(newId)}>
+      <FielsetStyled onSubmit={handleSubmit(newId)}>
         <select {...register("condId")}>
         <option>Condomínios</option>
         {condo.map((cond) => (
@@ -40,7 +41,7 @@ export function ListConds(){
         ))}
       </select>
       <button type="submit">Buscar Condominio</button>
-      </form>
+      </FielsetStyled>
 
     )
 }

@@ -10,13 +10,16 @@ import { useContext } from "react";
 import Header from "../../Components/Header/header";
 import { RegisterMessages } from "../../Components/Form/MessagensForm";
 import { Maintenance } from "../../Components/Maintenance";
+import { HomeContext } from "../../Contexts/homeContext";
 
 const HomeAdm = () => {
   const { logout } = useContext(ResidentContext);
 
+  const {modalNewCond ,setModalNewCond, modal} = useContext(HomeContext)
+
   const buttons = [
-    { label: "Condomínio", onClick: () => console.log("Condomínio") },
-    { label: "Manutenção", onClick: () => console.log("Manutenção") },
+    { label: "Condomínio", onClick: () => setModalNewCond(true) },
+    // { label: "Manutenção", onClick: () => console.log("Manutenção") },
     { label: "Recados", onClick: () => console.log("Recados") },
     { label: "Sair", onClick: () => logout()},
   ];
@@ -29,10 +32,17 @@ const HomeAdm = () => {
           <CondoPage />
           <MessagePage />
           <Maintenance />
+          {
+          modalNewCond && <ModalCreateCond />
+        }
+        {
+          modal && < ModalComents/>
+        }
         </div>
+
       </MainStyled>
     </>
-  );
+    )
 };
 
 export default HomeAdm;

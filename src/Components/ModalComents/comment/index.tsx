@@ -5,6 +5,10 @@ interface ICommentProps{
 }
 export function Comment({com}: ICommentProps){
     return(
-        <h1>{com.comment}</h1>
+        <li>
+            <p>{com.id}</p>
+            <h1>{com.comment}</h1>
+        </li>
+        
     )
 }

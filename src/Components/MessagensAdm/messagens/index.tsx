@@ -13,7 +13,6 @@ export function Messages({mess}: IMessagesProps){
     const { deleteMessagens, setModal, readAllComents} = useContext(HomeContext)
 
     const renderCommentOfMenssages = () => {
-        console.log(mess.id)
         setModal(true)
         readAllComents(mess.id)
     }

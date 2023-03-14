@@ -6,22 +6,22 @@ export const StyledFormeMessages = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 10px 10px;
   
-
-  gap: 20px;
-  padding: 15px 15px;
-
+  width: 90%;
   background-color: var(--color-6);
   border-radius: 10px;
-  width: 100%;
+
+
+  gap: 20px;
 
   input {
-    width: 90vw;
+   
     height: 40px;
     border: 1px solid;
-
+    width: 80vw;
     padding: 10px;
-    text-align: start;
+  
     border: none;
     background-color: var(--color-7);
 
@@ -30,7 +30,7 @@ export const StyledFormeMessages = styled.form`
     border-radius: 10px;
   }
   input:nth-child(2n){
-    width: 90vw;
+    max-width: 80vw;
     height: 200px;
     border-radius: 10px;
   }
@@ -57,12 +57,12 @@ export const StyledFormeMessages = styled.form`
     height: 440px;
     justify-content: space-between;
     input{
-        width: 400px;
+        width: 420px;
         height: 60px;
     }
     input:nth-child(2n){
         width: 400px;
-        height: 400px;
+        height: 420px;
     }
   }
 `;

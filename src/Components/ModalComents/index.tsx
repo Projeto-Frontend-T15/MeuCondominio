@@ -2,13 +2,15 @@ import { useContext } from "react"
 import { HomeContext } from "../../Contexts/homeContext"
 import { ResidentContext } from "../../Contexts/residentContext"
 import { Comment } from "./comment"
+import { StyledModalComments } from "./styled"
 
 export function ModalComents(){
 
     const {comments} = useContext(ResidentContext)
     const {setModal} = useContext(HomeContext)
     return(
-        <dialog>
+        <StyledModalComments>
+                    <dialog>
             <div>
                 <h2>Comentários</h2>
                 <button onClick={() => {setModal(false)}}>x</button>
@@ -25,5 +27,7 @@ export function ModalComents(){
                 }
             </ul>
         </dialog>
+        </StyledModalComments>
+
     )
 }
