@@ -37,7 +37,8 @@ interface IHeader {
         {home === false ? (
           <button type="button">Entrar</button>
         ) : (
-          <>
+          <div className="buttons">
+
             <button
               type="button"
               onClick={() => {
@@ -71,7 +72,7 @@ interface IHeader {
             <button type="button" onClick={logout}>
               Sair
             </button>
-          </>
+          </div>
         )}
 
 

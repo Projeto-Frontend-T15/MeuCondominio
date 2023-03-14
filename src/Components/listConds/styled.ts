@@ -9,7 +9,7 @@ export const StyledForm = styled.div`
     gap: 10px;
     select {
       width: 200px;
-      margin-left: 3%;
+     margin-top: 1rem;
       border-radius: 6px;
       border: 1px solid var(--color-6);
       padding: 0.5rem;
@@ -26,6 +26,7 @@ export const StyledForm = styled.div`
       font-size: var(--font-size-2);
       font-weight: var(--font-weight-3);
       color: var(--color-white);
+      margin-top: 1rem;
     }
   }
 `;

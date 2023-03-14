@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { HomeContext } from "../../../Contexts/homeContext";
 import { CardCash } from "./CardCash/cardCash";
+import { StyledCash } from "./styled";
 
 export const CashInfos = () => {
   const { cashs, readCash } = useContext(HomeContext);
@@ -10,7 +11,8 @@ export const CashInfos = () => {
   }, []);
 
   return (
-    <>
+    <StyledCash>
+      <label htmlFor="div">Caixa</label>
       {cashs.length > 0 ? (
         <ul>
           {cashs.map((cash) => (
@@ -25,6 +27,6 @@ export const CashInfos = () => {
       ) : (
         <p>Sem entradas</p>
       )}
-    </>
+    </StyledCash>
   );
 };

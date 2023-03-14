@@ -5,11 +5,17 @@ import { ImprovementsStyled } from "./style";
 
 export function ImprovementsPage() {
   return (
-    <ImprovementsListStyled>
-          <h1>Manutencao</h1>
-      <ListConds/>
-      <ImprovementsList />
-      <CashInfos />
-    </ImprovementsListStyled>
+    <>
+      <ImprovementsStyled>
+        <h1>Manutencao</h1>
+        <ListConds />
+        <div className="container_maintenance">
+        <ImprovementsList />
+        <CashInfos />
+        </div>
+       
+       
+      </ImprovementsStyled>
+    </>
   );
 }

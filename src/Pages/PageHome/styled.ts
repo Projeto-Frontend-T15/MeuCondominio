@@ -21,5 +21,13 @@ input{
     width: 200px;
 
 }
+.container_components{
+      
+  margin: 4%;
+}
+form{
+    flex-direction: column;
+    width: 100%;
+}
 
 `
